@@ -19,6 +19,26 @@ body {
   color: var(--text);
   background: var(--secondary);
 }
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -43,6 +63,14 @@ code {
   color: white;
   padding: 1rem 1.5rem;
   border-radius: 0.5rem;
-  border: none;
+  border: var(--primary) 2px solid;
+  font-size: 1.25rem;
+}
+.sec-btn{
+  background-color: white;
+  color: var(--primary);
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  border: var(--primary) 2px solid;
   font-size: 1.25rem;
 }

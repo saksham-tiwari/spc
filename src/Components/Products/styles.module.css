@@ -1,0 +1,10 @@
+.products{
+    margin-bottom: 5.5rem;
+}
+.products>div{
+    gap:1.25rem; 
+    overflow-x:scroll;
+}
+.products>div::-webkit-scrollbar {
+    height: 10px;
+  }

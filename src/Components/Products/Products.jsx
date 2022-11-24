@@ -7,7 +7,7 @@ const Products = () => {
   return (
     <div className={styles.products}>
         <h1>Our products,<span className='empText'> Purely handmade.</span></h1>
-        <div className='d-flex align-items-center justify-content-between'>
+        <div className='d-flex align-items-center justify-content-between' style={{}}>
             <Card2/>
             <Card2/>
             <Card2/>
