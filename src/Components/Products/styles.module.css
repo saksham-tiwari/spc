@@ -1,10 +1,22 @@
 .products{
     margin-bottom: 5.5rem;
 }
+
 .products>div{
     gap:1.25rem; 
     overflow-x:scroll;
+    cursor: grab;
 }
+
 .products>div::-webkit-scrollbar {
     height: 10px;
-  }
+}
+
+.products .empty {
+    background-color: white;
+    width: 100%;
+    height: 14rem;
+    border-radius: 1.5rem;
+    text-align: center;
+    padding: 1.5rem;
+}

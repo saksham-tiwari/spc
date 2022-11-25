@@ -7,3 +7,28 @@
     margin-bottom: 3.5rem;
     padding: 2.5rem 2rem;
 }
+
+.circle{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 100%;
+    margin-bottom: 1.5rem;
+    background: rgba(233, 242, 241, 0.7);
+}
+
+.card h4{
+    font-size: 1.75rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.circle img{
+    margin-left: 50%;
+    margin-top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.card p{
+    color: var(--empText);
+    font-size: 1rem;
+}
