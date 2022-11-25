@@ -11,7 +11,7 @@ const Login = () => {
         <div className='Page-content'>
             <div className='left-side'>
                 <div className='login-image-pos'>
-                    <img id='login-image' src={login} alt='Image' />
+                    <img id='login-image' src={login} alt='login' />
                 </div>
             </div>
             <div className='right-side'>
