@@ -5,8 +5,9 @@ import Login from "./Pages/Authentication/Login/Login";
 function App() {
   return (
     <div>
-      {/* <Home /> */}
-      <Login />
+      <Navbar/>
+      <Home />
+      {/* <Login /> */}
     </div>
   );
 }
