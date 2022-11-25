@@ -1,6 +1,7 @@
 .navbar{
     height: 5.5rem;
     font-size: 1.25rem;
+    z-index: 100;
 }
 .navbar-brand{
     font-size: 2.5rem;
@@ -8,6 +9,20 @@
 }
 .search{
     width: 33rem;
+    height: 3.5rem;
+    border-radius: 0rem 0.5rem 0.5rem 0;
+    padding-left: 0.5rem;
+}
+.search::placeholder{
+    color: var(--empText);
+}
+.input-group-prepend, .input-group-text {
+    background: white;
+    color: var(--empText);
+    border: none;
+    height: 3.5rem;
+    border-radius: 0.5rem 0rem 0rem 0.5rem;
+    padding-right: 0;
 }
 .search:focus{
     box-shadow: none;

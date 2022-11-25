@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import SearchIcon from '@mui/icons-material/Search';
 import "./styles.css";
 
 const Navbar = () => {
@@ -31,11 +32,14 @@ const Navbar = () => {
     
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <form className="d-flex" role="search" onSubmit={submit}>
+              <div class="input-group-prepend">
+                <span class="input-group-text"><SearchIcon/></span>
+            </div>
             <input className="form-control me-2 border-0 search" type="search" placeholder="Search for products and more" aria-label="Search"/>
             {/* <button className="btn btn-outline-success" type="submit">Search</button> */}
       </form>
     
-      <ul className="navbar-nav me-auto mb-2 mb-lg-0 mr-auto ml-auto float-right">
+      <ul className="navbar-nav me-auto mb-2 mb-lg-0 mr-auto ml-auto">
         <li className="nav-item">
           <a className="nav-link active" aria-current="page" href="/"><ShoppingCartOutlinedIcon/></a>
         </li>
