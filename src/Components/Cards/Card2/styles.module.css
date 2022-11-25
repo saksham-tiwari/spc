@@ -1,0 +1,9 @@
+.card{    
+    width: 24.125rem;
+    height: 38.5rem;
+    background-color: white;
+    border-radius: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 5.5rem;
+    padding: 2rem;
+}

@@ -1,0 +1,19 @@
+.card{
+    padding: 2rem;
+    background-color: white;
+    border-radius: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 3.5rem;
+}
+
+.card img{
+    border-radius: 1rem;
+    flex:1;
+}
+.card p{
+    flex: 3;
+    margin-left: 1.5rem;
+    line-height: 150%;
+    font-size: 1rem;
+    
+}
