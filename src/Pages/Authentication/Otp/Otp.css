@@ -1,0 +1,70 @@
+.Page-content{
+    /* width: 100vw;
+    height: 100vh; */
+    display: flex;
+    justify-content:center;
+}
+.left-side,.right-side{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 50vw; */
+    height: 100vh;
+}
+
+#login-image{
+    width: 100%;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.email,.password{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.login-button{
+    width: 20rem;
+    height: 2.5rem;
+    background: var(--primary);
+    border-radius: 6px;
+    color: white;
+    border: 1px solid transparent;
+}
+
+.forgot-password-text > p{
+    font-weight: 500;
+    font-size: 0.9rem;
+    line-height: 130.4%;
+    letter-spacing: 0.015em;
+    color: var(--primary);
+    cursor: pointer;
+}
+.email > input , .password > input {
+    background: #ffffff5b;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    padding: 0.45rem 0;
+    padding-left: 10%;
+}
+.email-icon{
+    position: absolute;
+    top: 2.9rem;
+    left: 0.2rem;
+}
+.eye-icon{
+    position: absolute;
+    top: 3rem;
+    right: 0.5rem;
+}
+.password-icon{
+    position: absolute;
+    top: 2.9rem;
+    left: 0.2rem;
+}
+
+

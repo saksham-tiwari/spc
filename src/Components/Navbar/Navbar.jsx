@@ -3,6 +3,7 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import SearchIcon from '@mui/icons-material/Search';
 import "./styles.css";
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   useEffect(() => {
@@ -25,7 +26,7 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-light">
   <div className="container-fluid">
-    <a className="navbar-brand" href="/">SPC SOAP</a>
+    <Link className="navbar-brand" to="/">SPC SOAP</Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
@@ -41,16 +42,16 @@ const Navbar = () => {
     
       <ul className="navbar-nav me-auto mb-2 mb-lg-0 mr-auto ml-auto">
         <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="/"><ShoppingCartOutlinedIcon/></a>
+          <Link className="nav-link active" aria-current="page" to="/"><ShoppingCartOutlinedIcon/></Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="/"><FavoriteBorderOutlinedIcon/></a>
+          <Link className="nav-link" to="/"><FavoriteBorderOutlinedIcon/></Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="/">Login</a>
+          <Link className="nav-link active" aria-current="page" to="/login">Login</Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link prim-btn" href="/">Sign Up</a>
+          <Link className="nav-link prim-btn" to="/signup">Sign Up</Link>
         </li>
       </ul>
       
