@@ -4,7 +4,7 @@ import {BaseUrl} from "../BaseUrl";
 axios.defaults.baseURL = BaseUrl;
 
 export const getAllProducts = async ()=>{
-    return await axios.get("product/list")
+    return await axios.get("/product/list")
     .then((res)=>{
         return Promise.resolve(res.data)
     })
@@ -15,7 +15,7 @@ export const getAllProducts = async ()=>{
 }
 
 export const getProdById = async (id)=>{
-    return await axios.get("product/view/"+id)
+    return await axios.get("/product/view/"+id)
     .then((res)=>{
         return Promise.resolve(res.data)
     })

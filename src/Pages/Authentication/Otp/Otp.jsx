@@ -5,7 +5,7 @@ import KeyIcon from '@mui/icons-material/Key';
 import { otp } from '../../../server/services/auth/auth.service';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-const Otp = () => {
+const Otp = (props) => {
     let location = useLocation()
     const navigate = useNavigate()
     useEffect(()=>{
@@ -23,7 +23,8 @@ const Otp = () => {
             console.log(res);
             localStorage.setItem("user",JSON.stringify(res.data.user))
             localStorage.setItem("token",res.data.token)
-            navigate("/")
+            props.setUser(true)
+            // navigate("/")
         })
         .catch((err)=>{console.log(err);})
     }

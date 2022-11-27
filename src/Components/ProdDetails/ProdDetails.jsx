@@ -1,0 +1,22 @@
+import React from 'react'
+import styles from "./styles.module.css"
+import StarBorderIcon from '@mui/icons-material/StarBorder';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+
+const ProdDetails = (props) => {
+  return (
+    <div className={styles.prodDetails}>
+        <h3>{props.data.name}</h3>
+        <p className={styles.stars}><StarBorderIcon /> 4.5+ (27) </p>
+        <h4>Rs. {props.data.price}</h4>
+        <button className='prim-btn'>Add to Cart</button>
+        <button className='sec-btn'>Add to Wishlist</button>
+        <p className={styles.info}>
+            <div style={{marginRight:"0.5rem"}}><InfoOutlinedIcon/></div>
+            <div> Additional 5% off on purchase of Rs. 849 and above</div>
+        </p>
+    </div>
+  )
+}
+
+export default ProdDetails

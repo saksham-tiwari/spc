@@ -7,7 +7,7 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { login } from '../../../server/services/auth/auth.service';
 
-const Login = () => {
+const Login = (props) => {
     const submit = (e)=>{
         e.preventDefault();
         const myFormData = new FormData(e.target);
@@ -19,6 +19,7 @@ const Login = () => {
             console.log(res);
             localStorage.setItem("user",JSON.stringify(res.data))
             localStorage.setItem("token",res.data.token)
+            props.setUser(true)
         })
         .catch((err)=>{console.log(err);})
     }

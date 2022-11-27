@@ -4,7 +4,7 @@ import {BaseUrl} from "../BaseUrl";
 axios.defaults.baseURL = BaseUrl;
 
 export const getWishlist = async ()=>{
-    return await axios.get("user/wishlist")
+    return await axios.get("/user/wishlist")
     .then((res)=>{
         return Promise.resolve(res.data)
     })
@@ -15,7 +15,7 @@ export const getWishlist = async ()=>{
 }
 
 export const getCart = async ()=>{
-    return await axios.get("user/cart")
+    return await axios.get("/user/cart")
     .then((res)=>{
         return Promise.resolve(res.data)
     })
@@ -26,7 +26,7 @@ export const getCart = async ()=>{
 }
 
 export const addToWishlist = async (wishlist)=>{
-    return await axios.post("user/wishlist",{wishlist})
+    return await axios.post("/user/wishlist",{wishlist})
     .then((res)=>{
         return Promise.resolve(res.data)
     })
@@ -37,7 +37,7 @@ export const addToWishlist = async (wishlist)=>{
 }
 
 export const addToCart = async (cart)=>{
-    return await axios.post("user/cart",{cart})
+    return await axios.post("/user/cart",{cart})
     .then((res)=>{
         return Promise.resolve(res.data)
     })
