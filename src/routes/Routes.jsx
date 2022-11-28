@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import Login from '../Pages/Authentication/Login/Login'
 import Otp from '../Pages/Authentication/Otp/Otp'
 import Register from '../Pages/Authentication/Register/Register'
+import Cart from '../Pages/Cart/Cart'
 import Home from '../Pages/Home/Home'
 import ProductPage from '../Pages/ProductPage/ProductPage'
 
@@ -23,6 +24,7 @@ const Router = () => {
         {/* Routes accessible without login */}
         <Route exact path="/" element={<Home/>}/>
         <Route exact path="/product/:id" element={<ProductPage/>}/>
+        <Route exact path="/cart" element={<Cart isUser={isUser}/>}/>
 
         {/* Auth section, accessible only when not already logged in */}
         {(!isUser)&&
