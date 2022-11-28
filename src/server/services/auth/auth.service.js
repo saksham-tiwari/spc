@@ -35,3 +35,8 @@ export const otp = async (email,otp)=>{
         return Promise.reject(err)
     })
 }
+
+export const logout = ()=>{
+    localStorage.clear()
+    window.location.reload()
+}

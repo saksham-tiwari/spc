@@ -42,7 +42,7 @@ const Navbar = () => {
     
       <ul className="navbar-nav me-auto mb-2 mb-lg-0 mr-auto ml-auto">
         <li className="nav-item">
-          <Link className="nav-link active" aria-current="page" to="/"><ShoppingCartOutlinedIcon/></Link>
+          <Link className="nav-link active" aria-current="page" to="/cart"><ShoppingCartOutlinedIcon/></Link>
         </li>
         <li className="nav-item">
           <Link className="nav-link" to="/"><FavoriteBorderOutlinedIcon/></Link>

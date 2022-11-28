@@ -14,7 +14,7 @@ const ProductPage = () => {
         "category": "Soap",
         "quantity": 100,
         "price": 60,
-        "imageUrl": [],
+        "imageUrl": ["/public/abd"],
         "eachrating": [],
         "__v": 0
     });

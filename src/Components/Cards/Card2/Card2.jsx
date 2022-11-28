@@ -4,6 +4,7 @@ import soap from "../../../Assets/soap.png"
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import { useNavigate } from 'react-router-dom';
 import { BaseUrl } from '../../../server/services/BaseUrl';
+import { addToCart } from '../../../server/services/user/user.service';
 
 
 
@@ -13,7 +14,11 @@ const Card2 = (props) => {
   })
   const navigate = useNavigate();
 
-  
+  const add = ()=>{
+    addToCart(props.product._id)
+    .then((res)=>{console.log(res);})
+    .catch((err)=>{console.log(err);})
+  }
   
   return (
     <div className={styles.card} onClick={()=>navigate(`/product/${props.product._id}`)}>
@@ -22,7 +27,7 @@ const Card2 = (props) => {
       <p>Rs.{props.product.price}</p>
       <div className='d-flex align-items-center justify-content-between' style={{gap:"0.5rem"}}>
         <button className="sec-btn"><FavoriteBorderOutlinedIcon/></button>
-        <button className="prim-btn">Add to Cart</button>
+        <button className="prim-btn" onClick={add}>Add to Cart</button>
       </div>
     </div>
   )
