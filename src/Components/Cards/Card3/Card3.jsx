@@ -8,16 +8,19 @@ import { addToCart } from '../../../server/services/user/user.service';
 const Card3 = (props) => {
     const add = ()=>{
         addToCart(props.item.product._id)
-        .then((res)=>{console.log(res);})
+        .then((res)=>{
+            props.setChange(prev=>(prev+1)%10)
+            console.log(res);})
         .catch((err)=>{console.log(err);})
         setQuantity(quantity+1)
     }
     const remove = ()=>{
         addToCart(props.item.product._id,true)
-        .then((res)=>{console.log(res);})
+        .then((res)=>{
+            props.setChange(prev=>(prev+1)%10)
+            console.log(res);})
         .catch((err)=>{console.log(err);})   
         setQuantity(quantity-1)
-
     }
 
     const [quantity,setQuantity] = useState(props.item.quantity);
