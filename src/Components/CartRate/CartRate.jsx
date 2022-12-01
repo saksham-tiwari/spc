@@ -13,6 +13,35 @@ const CartRate = (props) => {
         setPrice(y)
     }
 
+    // <button id="rzp-button1">Pay</button>
+var options = {
+    "key": "rzp_test_OJiQYnuFVOUynK", // Enter the Key ID generated from the Dashboard
+    "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "currency": "INR",
+    "name": "Acme Corp",
+    "description": "Test Transaction",
+    "image": "https://example.com/your_logo",
+    "order_id": "order_9A33XWu170gUtm", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
+    "prefill": {
+        "name": "Gaurav Kumar",
+        "email": "gaurav.kumar@example.com",
+        "contact": "9999999999"
+    },
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#3399cc"
+    }
+};
+var rzp1 = new window.Razorpay(options);
+const checkout = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+
+
     useEffect(()=>{
         getRate()
     },[data])
@@ -53,7 +82,7 @@ const CartRate = (props) => {
             </Row>
 
         </Container>
-        <button className='prim-btn'>Proceed to Checkout</button>
+        <button className='prim-btn' id="rzp-button1" onClick={checkout}>Proceed to Checkout</button>
     </div>
   )
 }
