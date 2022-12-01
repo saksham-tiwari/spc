@@ -36,7 +36,7 @@ export const otp = async (email,otp)=>{
     })
 }
 
-export const logout = ()=>{
+export const logout = (cond)=>{
     localStorage.clear()
-    window.location.reload()
+    if(cond)window.location.reload()
 }

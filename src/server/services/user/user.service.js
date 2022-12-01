@@ -9,7 +9,10 @@ axios.interceptors.response.use(function (response) {
     // Do something with response data
     return response;
   }, function (error) {
-    if (401 === error.response.status) logout()
+    //   if(error.response.config.url)
+    const isCart = error.response.config.url.split("/")[2].slice(0,4)==="cart";
+    if (401 === error.response.status && !isCart) logout(true)
+    else if(401 === error.response.status && isCart) logout(false)
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
     return Promise.reject(error);
@@ -74,6 +77,29 @@ export const removeFromCart = async (cart)=>{
     return await axios.delete("/user/cart",{cart},accessHeader())
     .then((res)=>{
         return Promise.resolve(res.data)
+    })
+    .catch((err)=>{
+        console.log(err);
+        return Promise.reject(err)
+    })
+}
+
+export const createOrder = async (amount)=>{
+    return await axios.post("/payment/order",{amount,currency:"INR"},accessHeader())
+    .then((res)=>{
+        return Promise.resolve(res.data)
+    })
+    .catch((err)=>{
+        console.log(err);
+        return Promise.reject(err)
+    })
+}
+
+
+export const verifyOrder = async (data)=>{
+    return await axios.post("/payment/verify",data,accessHeader())
+    .then((res)=>{
+        return Promise.resolve(res.data)    
     })
     .catch((err)=>{
         console.log(err);
