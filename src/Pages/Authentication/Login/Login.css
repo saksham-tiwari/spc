@@ -60,11 +60,20 @@
     position: absolute;
     top: 3rem;
     right: 0.5rem;
+    cursor: pointer;
 }
 .password-icon{
     position: absolute;
     top: 2.9rem;
     left: 0.2rem;
 }
+.Linker{
+    text-decoration: none;
+}
+.alerts{
+    color: rgb(199, 11, 11);
+    margin: 0;
+    padding: 0;
 
+}
 
