@@ -8,6 +8,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import { login } from '../../../server/services/auth/auth.service';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import Spinner from '../../../Components/Spinner/Spinner';
 
 const Login = (props) => {
     const [toggle, setToggle] = useState(false);
@@ -37,6 +38,9 @@ const Login = (props) => {
 
 
 return (<>
+      {
+        loading ? <Spinner /> : null
+      }
     <div className='Page-content'>
         <div className='left-side'>
             <div className='login-image-pos'>
