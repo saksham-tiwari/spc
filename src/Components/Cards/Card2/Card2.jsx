@@ -22,8 +22,8 @@ const Card2 = (props) => {
   
   return (
     <div className={styles.card} onClick={()=>navigate(`/product/${props.product._id}`)}>
-      <img src={BaseUrl + props.product.imageUrl[0]} alt="product"></img>
-      <h3>{props.product.name}</h3>
+      <img src={BaseUrl + props.product.imageUrl[0]} alt="product" onClick={()=>navigate(`/product/${props.product._id}`)}></img>
+      <h3 onClick={()=>navigate(`/product/${props.product._id}`)}>{props.product.name}</h3>
       <p>Rs.{props.product.price}</p>
       <div className='d-flex align-items-center justify-content-between' style={{gap:"0.5rem"}}>
         <button className="sec-btn"><FavoriteBorderOutlinedIcon/></button>

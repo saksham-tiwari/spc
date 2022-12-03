@@ -3,3 +3,9 @@
     font-size: 2.5rem;
     margin-bottom: 2.5rem;
 }
+
+.empty{
+    margin-left: 50%;
+    transform: translate(-50%,0);
+    text-align: center;
+}

@@ -5,6 +5,7 @@ import Otp from '../Pages/Authentication/Otp/Otp'
 import Register from '../Pages/Authentication/Register/Register'
 import Cart from '../Pages/Cart/Cart'
 import Home from '../Pages/Home/Home'
+import OrderSuccess from '../Pages/Order Succes/OrderSuccess'
 import ProductPage from '../Pages/ProductPage/ProductPage'
 
 const Router = () => {
@@ -25,6 +26,7 @@ const Router = () => {
         <Route exact path="/" element={<Home/>}/>
         <Route exact path="/product/:id" element={<ProductPage/>}/>
         <Route exact path="/cart" element={<Cart isUser={isUser}/>}/>
+        <Route exact path="/order-success" element={<OrderSuccess/>}/>
 
         {/* Auth section, accessible only when not already logged in */}
         {(!isUser)&&

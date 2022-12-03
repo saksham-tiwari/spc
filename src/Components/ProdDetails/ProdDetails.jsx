@@ -3,12 +3,17 @@ import styles from "./styles.module.css"
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import { addToCart } from '../../server/services/user/user.service';
+import { useNavigate } from 'react-router-dom';
 
 const ProdDetails = (props) => {
+  let navigate = useNavigate();
   const cart = ()=>{
     addToCart(props.data._id)
     .then((res)=>{console.log(res);})
-    .catch((err)=>{console.log(err);})
+    .catch((err)=>{
+      if(err.response.status===401) navigate("/login") 
+      console.log(err);
+    })
   }
   return (
     <div className={styles.prodDetails}>
