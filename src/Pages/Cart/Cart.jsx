@@ -32,7 +32,7 @@ const Cart = (props) => {
       <div className={styles.empty}>
         <h1>Your cart is empty</h1>
         <p>Kindly add items to your cart to proceed further</p>
-        <button className='prim-btn'>Explore items</button>
+        <button className='prim-btn' onClick={()=>{navigate("/")}}>Explore items</button>
       </div>}
       {data.length!==0&&<CartRate data={data} change={change}/>}
       {data.map((item,i)=><Card3 item={item} setChange={setChange}/>)}
