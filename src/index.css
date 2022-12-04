@@ -58,6 +58,7 @@ code {
 
 .empText{
   color: var(--empText);
+  font-size: 1rem;
 }
 
 .fa-regular{
@@ -81,4 +82,56 @@ code {
   border: var(--primary) 2px solid;
   font-size: 1.25rem;
   text-align: center;
+}
+
+
+@media only screen and (max-width:2560px) {
+  *{
+    font-size: 165%;
+  }
+}
+@media only screen and (max-width:2180px) {
+  *{
+    font-size: 135%;
+  }
+}
+@media only screen and (max-width:1990px) {
+  *{
+    font-size: 125%;
+  }
+}
+@media only screen and (max-width:1840px) {
+  *{
+    font-size: 115%;
+  }
+}
+@media only screen and (max-width:1696px) {
+  *{
+    font-size: 105%;
+  }
+}
+@media only screen and (max-width:1548px) {
+  *{
+    font-size: 100%;
+  }
+}
+@media only screen and (max-width:1474px) {
+  *{
+    font-size: 95%;
+  }
+}
+@media only screen and (max-width:1245px) {
+  *{
+    font-size: 85%;
+  }
+}
+@media only screen and (max-width:1110px) {
+  *{
+    font-size: 70%;
+  }
+}
+@media only screen and (max-width:986px) {
+  *{
+    font-size: 60%;
+  }
 }

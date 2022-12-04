@@ -3,7 +3,7 @@ import { BaseUrl } from '../../../server/services/BaseUrl'
 import styles from "./styles.module.css"
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import { addToCart } from '../../../server/services/user/user.service';
+import { addToCart, removeFromCart } from '../../../server/services/user/user.service';
 
 const Card3 = (props) => {
     const add = ()=>{
@@ -15,15 +15,26 @@ const Card3 = (props) => {
         setQuantity(quantity+1)
     }
     const remove = ()=>{
-        addToCart(props.item.product._id,true)
-        .then((res)=>{
-            props.setChange(prev=>(prev+1)%10)
-            console.log(res);})
-        .catch((err)=>{console.log(err);})   
+        if(quantity===1){
+            console.log(props.item._id);
+            removeFromCart(props.item._id)
+            .then((res)=>{
+                props.setChange(prev=>(prev+1)%10)
+                props.removeProduct(props.index)
+                console.log(res);})
+            .catch((err)=>{console.log(err);})
+        }
+        else{
+            addToCart(props.item.product._id,true)
+            .then((res)=>{
+                props.setChange(prev=>(prev+1)%10)
+                console.log(res);})
+            .catch((err)=>{console.log(err);})
+        }
         setQuantity(quantity-1)
     }
 
-    const [quantity,setQuantity] = useState(props.item.quantity);
+    const [quantity,setQuantity] = useState(props.quantity);
   return (
     <div className={styles.card}>
         <img src={BaseUrl+props.item.product.imageUrl[0]} alt="product"></img>

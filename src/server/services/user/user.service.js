@@ -74,7 +74,7 @@ export const removeFromWishlist = async (wishlist)=>{
 }
 
 export const removeFromCart = async (cart)=>{
-    return await axios.delete("/user/cart",{cart},accessHeader())
+    return await axios.delete("/user/cart/"+cart,accessHeader())
     .then((res)=>{
         return Promise.resolve(res.data)
     })

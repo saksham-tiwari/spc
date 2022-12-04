@@ -48,7 +48,7 @@ const Navbar = () => {
           <Link className="nav-link" to="/"><FavoriteBorderOutlinedIcon/></Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link active" aria-current="page" to="/login">Login</Link>
+          <Link className="nav-link" aria-current="page" to="/login">Login</Link>
         </li>
         <li className="nav-item">
           <Link className="nav-link prim-btn" to="/signup">Sign Up</Link>

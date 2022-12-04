@@ -4,7 +4,7 @@ import Card3 from '../../Components/Cards/Card3/Card3';
 import CartRate from '../../Components/CartRate/CartRate';
 import { getCart } from '../../server/services/user/user.service';
 import styles from "./styles.module.css"
-
+import empty from "../../Assets/empty.svg"
 const Cart = (props) => {
     let navigate = useNavigate();
     const [data,setData] = useState([])
@@ -26,6 +26,12 @@ const Cart = (props) => {
 
       }
     },[data])
+
+    const removeProduct = (index)=>{
+      let x= [...data]
+      x.splice(index,1)
+      setData(x)
+    }
   return (
     <div>
       {data.length?<h1 className={styles.head}>Cart</h1>:
@@ -33,9 +39,12 @@ const Cart = (props) => {
         <h1>Your cart is empty</h1>
         <p>Kindly add items to your cart to proceed further</p>
         <button className='prim-btn' onClick={()=>{navigate("/")}}>Explore items</button>
+        <div>
+        <img src={empty} alt="emptyCart"></img>
+        </div>
       </div>}
       {data.length!==0&&<CartRate data={data} change={change}/>}
-      {data.map((item,i)=><Card3 item={item} setChange={setChange}/>)}
+      {data.map((item,i)=><Card3 item={item} quantity={item.quantity} index={i} removeProduct={removeProduct} setChange={setChange}/>)}
     </div>
   )
 }
