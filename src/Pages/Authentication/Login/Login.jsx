@@ -67,7 +67,7 @@ return (<>
                         <div className='email-icon'>
                             <EmailIcon />
                         </div>
-                        <input type="email" placeholder='xyz@akgec.ac.in' name="email" {...register("email", { required: "email is required", pattern: { value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]{4,}[@][a][k][g][e][c][\.][a][c][\.][i][n]$/i, message: "this is not a valid email" } })} />
+                        <input type="email" placeholder='xyz@akgec.ac.in' name="email" {...register("email", { required: "email is required", pattern: { value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i, message: "this is not a valid email" } })} />
                         <p className='alerts'>{errors.email?.message}</p>
                     </div>
                     
