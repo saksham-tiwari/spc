@@ -2,6 +2,15 @@
     margin-bottom: 5.5rem;
 }
 
+.products h1{
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.products span{
+    font-size: 2.5rem !important;
+}
+
 .products>div{
     gap:1.25rem; 
     overflow-x:scroll;

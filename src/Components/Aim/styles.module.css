@@ -17,3 +17,12 @@
     font-size: 1rem;
     letter-spacing: 1.5px;
 }
+
+.Aim h1{
+    font-weight: 600;
+    font-size: 2.5rem;
+}
+
+.Aim span{
+    font-size: 2.5rem !important;
+}

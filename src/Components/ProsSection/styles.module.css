@@ -1,4 +1,7 @@
-.proSec h1{
+.prosSec h1{
     font-weight: 600;
     font-size: 2.5rem;
+}
+.prosSec span{
+    font-size: 2.5rem !important;
 }

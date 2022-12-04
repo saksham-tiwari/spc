@@ -3,7 +3,7 @@ import styles from "./styles.module.css"
 import aim from "../../Assets/aim.svg"
 const Aim = () => {
   return (
-    <div>
+    <div className={styles.Aim}>
         <h1>Providing employment <span className='empText'>is the aim of the centre.</span></h1>
         <div className={`${styles.card} d-flex align-items-center justify-content-between`}>
             <img src={aim} alt="aim"/>
