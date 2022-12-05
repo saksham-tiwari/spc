@@ -5,19 +5,27 @@ import CartRate from '../../Components/CartRate/CartRate';
 import { getCart } from '../../server/services/user/user.service';
 import styles from "./styles.module.css"
 import empty from "../../Assets/empty.svg"
+import { useDispatch } from "react-redux";
+import { setLoading } from '../../server/redux/actions/loading';
+
 const Cart = (props) => {
     let navigate = useNavigate();
+    const dispatch = useDispatch();
     const [data,setData] = useState([])
     const [change,setChange] = useState(1)
     useEffect(()=>{
         if(!props.isUser) navigate("/login")
         else {
+          dispatch(setLoading(true))
           getCart()
           .then(res=>{
             setData(res.data.cart)
+            dispatch(setLoading(false))
             console.log(res.data);
           })
-          .catch(err=>{console.log(err);})
+          .catch(err=>{
+            dispatch(setLoading(false))
+            console.log(err);})
         }
     },[])
 

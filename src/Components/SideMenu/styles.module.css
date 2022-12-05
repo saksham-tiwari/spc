@@ -1,0 +1,38 @@
+.sideMenu>div{
+    width: 18.3125rem;
+    height: fit-content;
+    background: #FFFFFF;
+    border-radius: 0.5rem;
+}
+.sideMenu{
+    position: fixed;
+    font-size: 1rem;
+    padding: 0;
+}
+.sideMenu h1{
+    font-weight: 600;
+    font-size: 2.5rem;
+}
+.sideMenu h1 a{
+    font-weight: 600;
+    font-size: 2.5rem;
+    text-decoration: none;
+    color: var(--text);
+}
+.sideMenu>div>ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sideMenu>div>ul>li{
+    padding: 1.5rem 0.5rem 1.5rem 1.5rem;
+    font-weight: 600;
+    font-size: 1.25rem;
+    border-bottom: 1px solid #E6E7E7;
+}
+
+.sideMenu>div>ul>li>a{
+    text-decoration: none;
+    color: var(--text);
+}

@@ -8,11 +8,13 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import { login } from '../../../server/services/auth/auth.service';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import Spinner from '../../../Components/Spinner/Spinner';
+import { useDispatch } from "react-redux";  
+import { setLoading } from '../../../server/redux/actions/loading';
+
 
 const Login = (props) => {
     const [toggle, setToggle] = useState(false);
-    const [loading, setLoading] = useState(false);
+    const dispatch = useDispatch()
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched"
@@ -21,26 +23,25 @@ const Login = (props) => {
     const onSubmit = (data, e) => {
         e.preventDefault();
         console.log(data);
-        setLoading(true);
+        dispatch(setLoading(true))
+
         login(data)
             .then((res) => {
                 console.log(res);
-                setLoading(false);
+                dispatch(setLoading(false))
                 localStorage.setItem("user", JSON.stringify(res.data))
                 localStorage.setItem("token", res.data.token)
                 props.setUser(true)
             })
             .catch((err) => { console.log(err);
-                setLoading(false); })
+                dispatch(setLoading(false))
+            })
                 reset();
     }
    
 
 
 return (<>
-      {
-        loading ? <Spinner /> : null
-      }
     <div className='Page-content'>
         <div className='left-side'>
             <div className='login-image-pos'>

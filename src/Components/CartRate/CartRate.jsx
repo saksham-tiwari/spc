@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom';
 import { BaseUrl } from '../../server/services/BaseUrl';
 import { createOrder, getCart, verifyOrder } from '../../server/services/user/user.service';
 import styles from "./styles.module.css"
@@ -8,6 +9,7 @@ const CartRate = (props) => {
     const [discount] = useState(10);
     const [total,setTotal] = useState(0);
     const [data,setData] = useState([]);
+    const navigate = useNavigate();
     const getRate = ()=>{
         let y=0;
         data.forEach(x=>{y+=x.quantity*x.product.price})
@@ -55,7 +57,11 @@ const checkout = async function(e){
                 console.log(response);
                 response['id'] = res.data._id;
                 verifyOrder(response)
-                .then((res)=>{console.log(res)})
+                .then((res)=>{
+                    console.log(res)
+                    // navigate("/order-success")
+                    navigate("/order-success", { state: { redirect: true } })
+                })
                 .catch((err)=>{console.log(err)})
               },
         };

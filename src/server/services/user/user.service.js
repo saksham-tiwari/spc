@@ -95,9 +95,30 @@ export const createOrder = async (amount)=>{
     })
 }
 
-
 export const verifyOrder = async (data)=>{
     return await axios.post("/payment/verify",data,accessHeader())
+    .then((res)=>{
+        return Promise.resolve(res.data)    
+    })
+    .catch((err)=>{
+        console.log(err);
+        return Promise.reject(err)
+    })
+}
+
+export const viewOrderHistory = async ()=>{
+    return await axios.get("/user/vieworderhistory",accessHeader())
+    .then((res)=>{
+        return Promise.resolve(res.data)    
+    })
+    .catch((err)=>{
+        console.log(err);
+        return Promise.reject(err)
+    })
+}
+
+export const viewOrder = async (id)=>{
+    return await axios.get("/user/vieworder/"+id,accessHeader())
     .then((res)=>{
         return Promise.resolve(res.data)    
     })

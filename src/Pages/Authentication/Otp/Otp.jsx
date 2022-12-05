@@ -4,10 +4,14 @@ import "./Otp.css"
 import KeyIcon from '@mui/icons-material/Key';
 import { otp } from '../../../server/services/auth/auth.service';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { setLoading } from '../../../server/redux/actions/loading';
+
 
 const Otp = (props) => {
     let location = useLocation()
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     useEffect(()=>{
         console.log(location);
         if(location.state===null) navigate("/signup")
@@ -18,15 +22,19 @@ const Otp = (props) => {
         const formDataObj = {};
         myFormData.forEach((value, key) => (formDataObj[key] = value));
         console.log(formDataObj);
+        dispatch(setLoading(true))
         otp(location.state.email,formDataObj.otp)
         .then((res)=>{
             console.log(res);
             localStorage.setItem("user",JSON.stringify(res.data.user))
             localStorage.setItem("token",res.data.token)
+            dispatch(setLoading(false))
             props.setUser(true)
             // navigate("/")
         })
-        .catch((err)=>{console.log(err);})
+        .catch((err)=>{
+            dispatch(setLoading(false))
+            console.log(err);})
     }
     return (<>
         <div className='Page-content'>

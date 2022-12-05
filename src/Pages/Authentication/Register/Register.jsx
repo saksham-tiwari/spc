@@ -12,13 +12,16 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import Spinner from '../../../Components/Spinner/Spinner';
+import { setLoading } from '../../../server/redux/actions/loading';
+import { useDispatch } from "react-redux";
+
 
 const Register = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const [toggle, setToggle] = useState(false);
     const [toggle2, setToggle2] = useState(false);
-    const [loading, setLoading] = useState(false);
 
     const { register, handleSubmit, formState: { errors }, reset, watch } = useForm({
         mode: "onTouched"
@@ -26,7 +29,7 @@ const Register = () => {
 
     const onSubmit = (data, e) => {
         e.preventDefault();
-        setLoading(true);
+        dispatch(setLoading(true));
         let formDataObj = {
             email : data.email,
             Name : data.Name,
@@ -36,19 +39,16 @@ const Register = () => {
         console.log(formDataObj);
         signup(formDataObj)
         .then((res) => {
-            setLoading(false);
+            dispatch(setLoading(false));
             navigate("/otp", { state: { email: formDataObj.email } })
             console.log(res);
         })
         .catch((err) => { console.log(err);
-            setLoading(false); })
+            dispatch(setLoading(false)); })
         reset();
     }
 
     return (<>
-        {
-            loading ? <Spinner /> : null
-        }
         <div className='Page-content'>
             <div className='left-side'>
                 <div className='login-image-pos'>
