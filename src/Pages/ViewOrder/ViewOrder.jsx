@@ -4,6 +4,7 @@ import { viewOrder } from '../../server/services/user/user.service'
 import styles from "./styles.module.css"
 import {useDispatch} from "react-redux"
 import { setLoading } from '../../server/redux/actions/loading'
+import SideMenu from '../../Components/SideMenu/SideMenu'
 
 const ViewOrder = () => {
     const location = useLocation()
@@ -26,7 +27,8 @@ const ViewOrder = () => {
         })
     },[])
   return (
-    <div className={styles.viewOrder}>ViewOrder</div>
+    <div className={styles.viewOrder}>
+     <SideMenu/></div>
   )
 }
 

@@ -29,12 +29,6 @@ const OrderHistory = () => {
       <SideMenu/>
       <div className={styles.cards}>
         {data.map(ele=><Card4 data={ele}/>)}
-        {data.map(ele=><Card4 data={ele}/>)}
-        {data.map(ele=><Card4 data={ele}/>)}
-        {data.map(ele=><Card4 data={ele}/>)}
-        {data.map(ele=><Card4 data={ele}/>)}
-        {data.map(ele=><Card4 data={ele}/>)}
-        {data.map(ele=><Card4 data={ele}/>)}
       </div>
     </div>
   )

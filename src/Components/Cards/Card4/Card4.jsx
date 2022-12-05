@@ -14,7 +14,7 @@ const Card4 = (props) => {
         <h2>
         Order Id {'#'}{props.data.razorpay.id.split("_")[1]}
         <span className={styles.capsule}>Delivered</span>
-        <span className={styles.price}>Rs.50</span>
+        <span className={styles.price}>Rs.{(props.data.amount)/100}</span>
         </h2>
         <p className='empText'>No. of items : {props.data.Item.length}</p>
         <p>Rate your experience <StarBorderIcon/> <StarBorderIcon/> <StarBorderIcon/> <StarBorderIcon/> <StarBorderIcon/></p>

@@ -16,7 +16,7 @@ const SideMenu = () => {
     <div>
         <ul>
             <li><Link to="/"><FavoriteBorderOutlinedIcon/> Wishlist</Link></li>
-            <li><Link to="/"><Inventory2OutlinedIcon/> My Orders</Link></li>
+            <li><Link to="/order-history"><Inventory2OutlinedIcon/> My Orders</Link></li>
             <li><Link to="/"><LogoutOutlinedIcon/> Logout</Link></li>
         </ul>
     </div>
