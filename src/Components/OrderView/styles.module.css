@@ -1,0 +1,122 @@
+.orderView{
+    background: #ffffff;
+    padding: 1.5rem 1.5rem 1rem;
+    width: 61rem;
+    margin-left: 21.0625rem;
+    position:absolute;
+    margin-top: 3.5rem;
+    border-radius: 0.5rem;
+}
+
+.orderView h2{
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.orderView h3{
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.capsule{
+    background: rgba(233, 242, 241, 0.7);
+    border-radius: 1.875rem;
+    width: 6.375rem;
+    /* height: 2rem; */
+    padding: 0.25rem 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-left: 0.5rem;
+    color: var(--primary);
+}
+
+.price{
+    float: right;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.orderView .rating{
+    font-weight: 500;
+    font-size: 1.125rem;
+    color: var(--text);
+    margin-bottom: 2.09375rem;
+}
+
+.orderView .rating svg{
+    color: #F3C117;
+    cursor: pointer;
+}
+
+.orderView .bill{
+    margin-bottom: 1.5rem;
+}
+
+.orderView .bill h4{
+    font-weight: 500;
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.orderView .bill span{
+    float: right;
+}
+
+.orderView .bill h3{
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.orderView .buttonDiv{
+    display: flex;
+    justify-content: space-between;
+}
+
+.orderView button{
+    /* width: 48%; */
+    width: 28rem;
+    font-weight: 600;
+
+}
+
+.list{
+    background: #ffffff;
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-between;
+    flex-direction: row;
+    min-height: 5.5625rem;
+    padding: 1rem 0px;
+    margin-bottom: 1.5rem;
+    border-top: 1px solid rgba(233, 242, 241, 0.7);
+    border-radius: .5rem;
+
+}
+
+.list .prodImg{
+    width: 5.125rem;
+    height: 5.5625rem;
+    border-radius: 0.5rem;
+}
+
+.list h2{
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.list h2 span{
+    float: right;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.list p{
+    font-weight: 500;
+    font-size: 1.125rem;
+}
