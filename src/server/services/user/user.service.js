@@ -51,6 +51,28 @@ export const addToWishlist = async (wishlist)=>{
     })
 }
 
+export const isInCart = async (cart)=>{
+    return await axios.get("/user/cart/"+cart,accessHeader())
+    .then((res)=>{
+        return Promise.resolve(res.data)
+    })
+    .catch((err)=>{
+        console.log(err);
+        return Promise.reject(err)
+    })
+}
+
+export const isInWishlist = async (wishlist)=>{
+    return await axios.get("/user/wishlist/"+wishlist,accessHeader())
+    .then((res)=>{
+        return Promise.resolve(res.data)
+    })
+    .catch((err)=>{
+        console.log(err);
+        return Promise.reject(err)
+    })
+}
+
 export const addToCart = async (cart,dec=false)=>{
     return await axios.post("/user/cart?dec="+dec,{cart},accessHeader())
     .then((res)=>{

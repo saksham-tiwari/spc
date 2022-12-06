@@ -74,12 +74,15 @@ code {
   font-size: 1.25rem;
   text-align: center;
 }
+.prim-btn:disabled{
+  opacity: 0.5;
+}
 .sec-btn{
   background-color: white;
   color: var(--primary);
   padding: 1rem 1.5rem;
   border-radius: 0.5rem;
-  border: var(--primary) 2px solid;
+  border: 1.5px solid #E6E7E7;
   font-size: 1.25rem;
   text-align: center;
 }
