@@ -13,18 +13,23 @@ const Cart = (props) => {
     const dispatch = useDispatch();
     const [data,setData] = useState([])
     const [change,setChange] = useState(1)
+    const [shimmer,setShimmer] = useState(true)
+
     useEffect(()=>{
         if(!props.isUser) navigate("/login")
         else {
+          setShimmer(true)
           dispatch(setLoading(true))
           getCart()
           .then(res=>{
             setData(res.data.cart)
+            setShimmer(false)
             dispatch(setLoading(false))
             console.log(res.data);
           })
           .catch(err=>{
             dispatch(setLoading(false))
+            setShimmer(false)
             console.log(err);})
         }
     },[])
@@ -51,8 +56,8 @@ const Cart = (props) => {
         <img src={empty} alt="emptyCart"></img>
         </div>
       </div>}
-      {data.length!==0&&<CartRate data={data} change={change}/>}
-      {data.map((item,i)=><Card3 item={item} quantity={item.quantity} index={i} removeProduct={removeProduct} setChange={setChange}/>)}
+      {data.length!==0&&<CartRate shimmer={shimmer} setShimmer={setShimmer} data={data} change={change}/>}
+      {data.map((item,i)=><Card3 shimmer={shimmer} setShimmer={setShimmer} item={item} quantity={item.quantity} index={i} removeProduct={removeProduct} setChange={setChange}/>)}
     </div>
   )
 }

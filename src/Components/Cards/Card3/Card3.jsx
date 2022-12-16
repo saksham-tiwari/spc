@@ -6,18 +6,25 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import { addToCart, removeFromCart } from '../../../server/services/user/user.service';
 
 const Card3 = (props) => {
-    const add = ()=>{
-        addToCart(props.item.product._id)
+    const [load,setLoad] = useState(false);
+    const add = async()=>{
+        props.setShimmer(true)
+        setLoad(true)
+        await addToCart(props.item.product._id)
         .then((res)=>{
             props.setChange(prev=>(prev+1)%10)
             console.log(res);})
         .catch((err)=>{console.log(err);})
         setQuantity(quantity+1)
+        props.setShimmer(false)
+        setLoad(false)
     }
-    const remove = ()=>{
+    const remove = async ()=>{
+        props.setShimmer(true)
+        setLoad(true)
         if(quantity===1){
             console.log(props.item._id);
-            removeFromCart(props.item._id)
+            await removeFromCart(props.item._id)
             .then((res)=>{
                 props.setChange(prev=>(prev+1)%10)
                 props.removeProduct(props.index)
@@ -25,13 +32,15 @@ const Card3 = (props) => {
             .catch((err)=>{console.log(err);})
         }
         else{
-            addToCart(props.item.product._id,true)
+            await addToCart(props.item.product._id,true)
             .then((res)=>{
                 props.setChange(prev=>(prev+1)%10)
                 console.log(res);})
             .catch((err)=>{console.log(err);})
         }
         setQuantity(quantity-1)
+        props.setShimmer(false)
+        setLoad(false)
     }
 
     const [quantity,setQuantity] = useState(props.quantity);
@@ -41,9 +50,9 @@ const Card3 = (props) => {
         <div className={styles.two}>
             <h3>{props.item.product.name}</h3>
             <div className={styles.plusMinus}>
-                <button onClick={remove}><RemoveIcon/></button>
-                <span>{quantity}</span>
-                <button onClick={add}><AddIcon/></button>
+                <button onClick={remove} disabled={load}><RemoveIcon/></button>
+                <span>{load?<div className="spinner-border spinner-border-sm" role="status"></div>:quantity}</span>
+                <button onClick={add} disabled={load}><AddIcon/></button>
             </div>
         </div>
         <div>

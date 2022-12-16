@@ -31,8 +31,8 @@ const Navbar = () => {
       <span className="navbar-toggler-icon"></span>
     </button>
     
-    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-      <form className="d-flex" role="search" onSubmit={submit}>
+    <div className="collapse navbar-collapse " id="navbarSupportedContent">
+      <form className="d-flex mr-auto ml-auto" role="search" onSubmit={submit}>
               <div class="input-group-prepend">
                 <span class="input-group-text"><SearchIcon/></span>
             </div>
@@ -40,9 +40,9 @@ const Navbar = () => {
             {/* <button className="btn btn-outline-success" type="submit">Search</button> */}
       </form>
     
-      <ul className="navbar-nav me-auto mb-2 mb-lg-0 mr-auto ml-auto">
+      <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
         <li className="nav-item">
-          <Link className="nav-link active" aria-current="page" to="/cart"><ShoppingCartOutlinedIcon/></Link>
+          <Link className="nav-link" aria-current="page" to="/cart"><ShoppingCartOutlinedIcon/></Link>
         </li>
         <li className="nav-item">
           <Link className="nav-link" to="/"><FavoriteBorderOutlinedIcon/></Link>

@@ -34,6 +34,7 @@ const Card2 = (props) => {
       setCartLoad(false)})
     .catch((err)=>{
       setCartLoad(false)
+      if(err.response.status===401) navigate("/login") 
       console.log(err);})
   }
   
@@ -44,7 +45,10 @@ const Card2 = (props) => {
       <p>Rs.{props.product.price}</p>
       <div className='d-flex align-items-center justify-content-between' style={{gap:"0.5rem"}}>
         {/* <button className="prim-btn" onClick={add}>{!isCart?("Add to Cart"):("Go To Cart")}</button> */}
-        {isCart?<button className="prim-btn" onClick={()=>navigate("/cart")}><DoneSharpIcon/> Go To Cart</button>:<button className="prim-btn" disabled={cartLoad} onClick={add}>Add To Cart</button>}
+        {isCart?<button className="prim-btn" onClick={()=>navigate("/cart")}><DoneSharpIcon/> Go To Cart</button>:<button className="prim-btn" disabled={cartLoad} onClick={add}>
+        {cartLoad&&<div class="spinner-border spinner-border-sm mx-1" role="status">
+        </div>}
+        Add To Cart</button>}
         {isWishlist?<button className={`${styles.like} sec-btn`}><FavoriteIcon/></button>:<button className={`${styles.like} sec-btn`}><FavoriteBorderOutlinedIcon/></button>}
       </div>
     </div>

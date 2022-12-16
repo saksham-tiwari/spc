@@ -4,16 +4,26 @@ import { useNavigate } from 'react-router-dom';
 import { BaseUrl } from '../../server/services/BaseUrl';
 import { createOrder, getCart, verifyOrder } from '../../server/services/user/user.service';
 import styles from "./styles.module.css"
+import { ShimmerTitle,ShimmerButton,ShimmerBadge } from "react-shimmer-effects";
+import { useDispatch } from 'react-redux';
+import { setLoading } from '../../server/redux/actions/loading';
+
 const CartRate = (props) => {
     const [price,setPrice] = useState(0);
     const [discount] = useState(10);
     const [total,setTotal] = useState(0);
     const [data,setData] = useState([]);
+    // const [shimmer,setShimmer] = useState(false)
+    let shimmer=props.shimmer 
+    let setShimmer=props.setShimmer
     const navigate = useNavigate();
-    const getRate = ()=>{
+    const dispatch = useDispatch();
+    const getRate = async ()=>{
+        setShimmer(true)
         let y=0;
-        data.forEach(x=>{y+=x.quantity*x.product.price})
+        await data.forEach(x=>{y+=x.quantity*x.product.price})
         setPrice(y)
+        setShimmer(false)
     }
 
     // <button id="rzp-button1">Pay</button>
@@ -21,6 +31,7 @@ const CartRate = (props) => {
 const checkout = async function(e){
     e.preventDefault();
     console.log("here i am");
+    dispatch(setLoading(true))
     let options;
     // const data = await fetch("/api/razorpay", { method: "POST" }).then((t) =>
     //   t.json()
@@ -28,6 +39,7 @@ const checkout = async function(e){
     console.log(data);
     await createOrder(total*100)
     .then((res)=>{
+        dispatch(setLoading(false))
         console.log(res.data.razorpay.id);
         options = {
             "key": "rzp_test_OJiQYnuFVOUynK", // Enter the Key ID generated from the Dashboard
@@ -55,11 +67,14 @@ const checkout = async function(e){
                 // alert(response.razorpay_order_id);
                 // alert(response.razorpay_signature);
                 console.log(response);
+                dispatch(setLoading(true))
                 response['id'] = res.data._id;
                 verifyOrder(response)
                 .then((res)=>{
+                    dispatch(setLoading(false))
                     console.log(res)
                     // navigate("/order-success")
+
                     navigate("/order-success", { state: { redirect: true } })
                 })
                 .catch((err)=>{console.log(err)})
@@ -81,14 +96,42 @@ const checkout = async function(e){
         setTotal(price-discount)
     },[discount,price])
     useEffect(()=>{
+        setShimmer(true)
         getCart()
         .then(res=>{
+            setShimmer(false)
             setData(res.data.cart)})
-        .catch(err=>{console.log(err);})
+        .catch(err=>{
+            setShimmer(false)
+            console.log(err);})
     },[props.change])
   return (
     <div className={styles.cartRate}>
-        <Container className={styles.container}>
+        {shimmer?
+            <Container className={styles.container}>
+            <Row className={styles.row}>
+                {/* <ShimmerTitle line={1} gap={0} /> */}
+                <Col><ShimmerTitle line={1} gap={0} variant={"secondary"}/></Col>
+                <Col className={styles.second}><ShimmerTitle line={1} gap={0} variant={"secondary"} /></Col>
+            </Row>
+            <Row className={styles.row}>
+                <Col><ShimmerTitle line={1} gap={0} variant={"secondary"} /></Col>
+                <Col className={styles.second}><ShimmerTitle line={1} gap={0} variant={"secondary"} /></Col>
+            </Row>
+            <Row className={styles.row}>
+                <Col><ShimmerTitle line={1} gap={0} variant={"secondary"} /></Col>
+                <Col className={styles.second}><ShimmerTitle line={1} gap={0} variant={"secondary"} /></Col>
+            </Row>
+            <Row className={styles.row}>
+                <Col><ShimmerTitle line={1} gap={0} variant={"secondary"} /></Col>
+                <Col className={styles.second}><ShimmerTitle line={1} gap={0} variant={"secondary"} /></Col>
+            </Row>
+            <hr className={styles.dashed}></hr>
+            <Row className={styles.row}>
+                <Col><ShimmerTitle line={1} gap={0} variant={"secondary"} /></Col>
+                <Col className={styles.second}><ShimmerTitle line={1} gap={0} variant={"secondary"} /></Col>
+            </Row>
+        </Container>:<Container className={styles.container}>
             <Row className={styles.row}>
                 <Col>Total Price</Col>
                 <Col className={styles.second}>Rs.{price}</Col>
@@ -111,8 +154,10 @@ const checkout = async function(e){
                 <Col className={styles.second}>Rs.{total}</Col>
             </Row>
 
-        </Container>
-        <button className='prim-btn' id="rzp-button1" onClick={checkout}>Proceed to Checkout</button>
+        </Container>}
+        {shimmer?<ShimmerButton size="lg" width="100%"  className={styles.btnShimmer}/>:<button className='prim-btn' id="rzp-button1" onClick={checkout}>Proceed to Checkout</button>}
+        {/* <ShimmerBadge width={"100%"} /> */}
+        
     </div>
   )
 }

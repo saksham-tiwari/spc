@@ -149,3 +149,14 @@ export const viewOrder = async (id)=>{
         return Promise.reject(err)
     })
 }
+
+export const generateQr = async (paymentId)=>{
+    return await axios.post("/payment/generate",{paymentId},accessHeader())
+    .then((res)=>{
+        return Promise.resolve(res.data)    
+    })
+    .catch((err)=>{
+        console.log(err);
+        return Promise.reject(err)
+    })
+}

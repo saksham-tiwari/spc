@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom'
 import DescBlock from '../../Components/DescBlock/DescBlock';
 import ProdDetails from '../../Components/ProdDetails/ProdDetails';
 import ProdDisplay from '../../Components/ProdDisplay/ProdDisplay';
+import { setLoading } from '../../server/redux/actions/loading';
 import { getProdById } from '../../server/services/product/product.service';
 import styles from "./styles.module.css"
 
@@ -18,13 +20,19 @@ const ProductPage = () => {
         "eachrating": [],
         "__v": 0
     });
+    const dispatch = useDispatch();
     useEffect(()=>{
+        dispatch(setLoading(true))
         console.log(location.pathname.split("/")[2]);
         getProdById(location.pathname.split("/")[2])
         .then((res)=>{
             console.log(res);
-            setData(res.data)})
-        .catch((err)=>console.log(err))
+            setData(res.data)
+            dispatch(setLoading(false))
+        })
+        .catch((err)=>{
+            dispatch(setLoading(false))
+            console.log(err)})
     },[location])
   return (
     <div>

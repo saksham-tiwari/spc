@@ -120,3 +120,14 @@
     font-weight: 500;
     font-size: 1.125rem;
 }
+
+.qr{
+    /* height: "auto";  */
+    display: flex;
+    margin: 2rem;
+    justify-content: center;
+}
+
+.qr svg{
+    max-width: 30rem;
+}
