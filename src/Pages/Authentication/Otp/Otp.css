@@ -38,7 +38,7 @@
 
 .forgot-password-text > p{
     font-weight: 500;
-    font-size: 0.9rem;
+    font-size: 0.9rem ;
     line-height: 130.4%;
     letter-spacing: 0.015em;
     color: var(--primary);

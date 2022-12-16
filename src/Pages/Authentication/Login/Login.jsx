@@ -64,7 +64,7 @@ return (<>
 
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className='email mb-1'>
-                        <label className='py-2'>Email</label>
+                        <label className='py-2 le'>Email</label>
                         <div className='email-icon'>
                             <EmailIcon />
                         </div>
@@ -73,7 +73,7 @@ return (<>
                     </div>
                     
                     <div className='password mb-1'>
-                        <label className='py-2'>Password</label>
+                        <label className='py-2 lp'>Password</label>
                         <div className='password-icon'>
                             <LockIcon />
                         </div>
