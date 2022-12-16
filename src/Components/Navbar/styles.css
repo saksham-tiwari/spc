@@ -5,11 +5,15 @@
     position:fixed;
     top: 0;
     width: 100%;
+    border: 1px black solid;
+    padding-left: 0;
     /* margin-right: 4.5rem; */
 }
 .navbar-brand{
     font-size: 2.5rem;
     font-weight: 800;
+    margin: 0;
+    margin-left: -10px;
 }
 .search{
     width: 33rem;

@@ -40,7 +40,7 @@ const Navbar = () => {
             {/* <button className="btn btn-outline-success" type="submit">Search</button> */}
       </form>
     
-      <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
+      <ul className="navbar-nav mb-2 mb-lg-0 ">
         <li className="nav-item">
           <Link className="nav-link" aria-current="page" to="/cart"><ShoppingCartOutlinedIcon/></Link>
         </li>
