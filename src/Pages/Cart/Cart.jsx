@@ -5,18 +5,20 @@ import CartRate from '../../Components/CartRate/CartRate';
 import { getCart } from '../../server/services/user/user.service';
 import styles from "./styles.module.css"
 import empty from "../../Assets/empty.svg"
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setLoading } from '../../server/redux/actions/loading';
 
-const Cart = (props) => {
+const Cart = () => {
     let navigate = useNavigate();
     const dispatch = useDispatch();
     const [data,setData] = useState([])
     const [change,setChange] = useState(1)
     const [shimmer,setShimmer] = useState(true)
+  const isUser = useSelector((state)=>state.user).isUser
+
 
     useEffect(()=>{
-        if(!props.isUser) navigate("/login")
+        if(!isUser) navigate("/login")
         else {
           setShimmer(true)
           dispatch(setLoading(true))

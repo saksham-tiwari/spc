@@ -6,9 +6,10 @@ import { otp } from '../../../server/services/auth/auth.service';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { setLoading } from '../../../server/redux/actions/loading';
+import { setUser } from '../../../server/redux/actions/user';
 
 
-const Otp = (props) => {
+const Otp = () => {
     let location = useLocation()
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -29,7 +30,8 @@ const Otp = (props) => {
             localStorage.setItem("user",JSON.stringify(res.data.user))
             localStorage.setItem("token",res.data.token)
             dispatch(setLoading(false))
-            props.setUser(true)
+            dispatch(setUser(true))
+            // props.setUser(true)
             // navigate("/")
         })
         .catch((err)=>{
