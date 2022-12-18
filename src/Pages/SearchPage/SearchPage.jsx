@@ -12,11 +12,14 @@ const SearchPage = () => {
     const [data,setData] = useState([])
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const [explore,setExplore] = useState(true)
     useEffect(()=>{
         dispatch(setLoading(true))
         let query = location.search.split("=")[1]
-        console.log(query);
-        searchProd(query)
+        console.log(query,location);
+        if(location.search==='') setExplore(true)
+        else setExplore(false)
+        searchProd(location.search!==''?query:'')
         .then((res)=>{
             console.log(res.data);
             setData(res.data)
@@ -33,7 +36,9 @@ const SearchPage = () => {
         <div className={styles.fixed}>
         <h2>
         <ArrowBackIcon onClick={()=>navigate("/")} fontSize='large'/>
-        {data.length} search results found</h2>
+        {explore?("Explore all products"):(data.length + "search results found")}
+        {/* {data.length} search results found */}
+        </h2>
         <div className={styles.filterBlock}>
             <h3>Filters</h3>
             <div>

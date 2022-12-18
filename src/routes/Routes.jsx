@@ -23,7 +23,7 @@ const Router = () => {
   //   else setUser(false)
   //   console.log(isUser);
   // },[isUser])
-  const isUser = useSelector((state)=>state.user).isUser
+  const isUser = useSelector((state)=>state.user).isUser||localStorage.getItem("token")
   return (
 
     <Routes>
@@ -32,10 +32,11 @@ const Router = () => {
         <Route exact path="/" element={<Home/>}/>
         <Route exact path="/product/:id" element={<ProductPage/>}/>
         <Route exact path="/search" element={<SearchPage/>}/>
-        <Route exact path="/cart" element={<Cart isUser={isUser}/>}/>
+        <Route exact path="/explore" element={<SearchPage/>}/>
+        {isUser&&<><Route exact path="/cart" element={<Cart/>}/>
         <Route exact path="/order-history" element={<OrderHistory/>}/>
         <Route exact path="/view-order/:id" element={<ViewOrder/>}/>
-        <Route exact path="/order-success" element={<OrderSuccess/>}/>
+        <Route exact path="/order-success" element={<OrderSuccess/>}/></>}
 
         {/* Auth section, accessible only when not already logged in */}
         {(!isUser)&&

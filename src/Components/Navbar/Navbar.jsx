@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import SearchIcon from '@mui/icons-material/Search';
@@ -7,13 +7,19 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { signout } from '../../server/redux/actions/user';
 import { searchProd } from '../../server/services/product/product.service';
+import { Dropdown, DropdownButton } from 'react-bootstrap';
+// import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 
 const Navbar = () => {
   const isUser = useSelector((state)=>state.user).isUser
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const [name,setName] = useState("")
   useEffect(() => {
     console.log(isUser);
+    if(isUser) setName(JSON.parse(localStorage.getItem("user")).Name )
     // const listener = event => {
     //   if (event.code === "Enter" || event.code === "NumpadEnter") {
     //     console.log("Enter key was pressed. Run your function.");
@@ -55,14 +61,22 @@ const Navbar = () => {
         {isUser&&<><li className="nav-item">
           <Link className="nav-link" aria-current="page" to="/cart"><ShoppingCartOutlinedIcon/></Link>
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <Link className="nav-link" to="/"><FavoriteBorderOutlinedIcon/></Link>
-        </li>
+        </li> */}
+        
         <li className="nav-item">
-          <button onClick={()=>{
-            dispatch(signout(true))
-            window.location.reload()
-            }}>Logout</button>
+            <DropdownButton id="dropdown-basic-button" title={`Hi!,${name}`}>
+              
+              <Dropdown.Item onClick={()=>navigate("/order-history")}><Inventory2OutlinedIcon/>My Orders</Dropdown.Item>
+              <Dropdown.Item onClick={()=>navigate("/wishlist")}><FavoriteBorderOutlinedIcon/> Wishlist</Dropdown.Item>
+              <Dropdown.Item onClick={()=>{
+                dispatch(signout(true))
+                window.location.reload()
+                }}>
+                <LogoutOutlinedIcon/>
+                Logout</Dropdown.Item>
+            </DropdownButton>
         </li>
         </>}
         {!isUser&&<><li className="nav-item">
