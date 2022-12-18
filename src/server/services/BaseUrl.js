@@ -1,1 +1,1 @@
-export const BaseUrl = "https://spc-production.up.railway.app/"
+export const BaseUrl = "http://44.202.84.23:3000/"
