@@ -10,7 +10,7 @@ const ProsSection = () => {
   return (
     <div className={styles.prosSec}>
         <h1>Delivering Quality product <span className='empText'>at Nominal price.</span></h1>
-        <div className='d-flex align-items-center justify-content-between flex-wrap' style={{gap:"1.25rem"}}>
+        <div className={`${styles.cardDiv} d-flex align-items-center justify-content-between`} style={{gap:"1.25rem"}}>
         <Card1 
           img={truck} 
           heading="No Transportation Cost"

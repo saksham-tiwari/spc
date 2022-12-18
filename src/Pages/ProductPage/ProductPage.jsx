@@ -36,10 +36,10 @@ const ProductPage = () => {
     },[location])
   return (
     <div>
-        <p className={styles.toptext}>Products / Alovera Soap with Mogra fragnance </p>
+        <p className={styles.toptext}>Products / {data.name} </p>
         <ProdDetails data={data}/>
         <ProdDisplay data={data}/>
-        <DescBlock/>
+        <DescBlock data={data}/>
     </div>
   )
 }
