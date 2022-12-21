@@ -5,3 +5,8 @@
 .prosSec span{
     font-size: 2.5rem !important;
 }
+
+.prosSec .cardDiv{
+    overflow-x: scroll;
+    overflow-y: hidden;
+}

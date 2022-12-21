@@ -2,9 +2,38 @@
     background-color: white;
     width: 54.625rem;
     height: 33.8125rem; 
+    height: fit-content;
     padding: 2.25rem 1.5rem;
     border-radius: 0.5rem;
     margin: 1rem;
     margin-left: 0;
     margin-top: 2rem;
+}
+
+.descBlock .head{
+    display: flex;
+    /* border-bottom: ;  */
+    border-bottom: 2px solid #E6E7E7;
+    margin-bottom: 1.75rem;
+}
+
+.descBlock .head h2{
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-right: 2rem;
+    color: var(--empText);
+    cursor: pointer;
+}
+
+.descBlock .head .active{
+    color: var(--text);
+    border-bottom: 2px solid #247F70;
+
+}
+
+.descBlock .desc{
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 130.4%;
+    letter-spacing: 1.25px;
 }

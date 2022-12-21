@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from "./styles.module.css"
 
-const DescBlock = () => {
+const DescBlock = (props) => {
+  const [active,setActive] = useState(1)
   return (
     <div className={styles.descBlock}>
-        Description
+        <div className={styles.head}>
+          <h2 className={active===0&&`${styles.active}`} onClick={()=>setActive(0)}>Description</h2>
+          <h2 className={active===1&&`${styles.active}`} onClick={()=>setActive(1)}>Reviews and Ratings</h2>
+        </div>
+        {active===0&&<div className={`${styles.desc} empText`}>{props.data.description}</div>}
+        {active===1&&<div></div>}
     </div>
   )
 }

@@ -24,3 +24,14 @@ export const getProdById = async (id)=>{
         return Promise.reject(err)
     })
 }
+
+export const searchProd = async (id)=>{
+    return await axios.get("/product/search?search="+id)
+    .then((res)=>{
+        return Promise.resolve(res.data)
+    })
+    .catch((err)=>{
+        console.log(err);
+        return Promise.reject(err)
+    })
+}

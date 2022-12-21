@@ -4,10 +4,9 @@
     z-index: 100;
     position:fixed;
     top: 0;
-    width: 100%;
-    border: 1px black solid;
+    /* width:81.1rem; */
+    width: calc(100% - 13rem);
     padding-left: 0;
-    /* margin-right: 4.5rem; */
 }
 .navbar-brand{
     font-size: 2.5rem;
