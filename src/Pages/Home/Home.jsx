@@ -6,18 +6,7 @@ import TopBlock from '../../Components/TopBlock/TopBlock'
 import { getAllProducts } from '../../server/services/product/product.service'
 
 const Home = () => {
-  const [products,setProducts] = useState([{
-    "_id": "6383bc48e95fc6b72f8416e5",
-    "name": "Charcoal Soap",
-    "category": "Soap",
-    "quantity": 100,
-    "price": 50,
-    "imageUrl": [
-        "/public/1669577799993pexels-antoni-shkraba-6187540.jpg"
-    ],
-    "eachrating": [],
-    "__v": 0
-}]);
+  const [products,setProducts] = useState([]);
   useEffect(()=>{
     getAllProducts()
     .then((res)=>{

@@ -8,6 +8,7 @@ import empty from "../../Assets/empty.svg"
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading } from '../../server/redux/actions/loading';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { loadCart } from '../../server/redux/actions/cart';
 
 
 const Cart = () => {
@@ -17,6 +18,7 @@ const Cart = () => {
     const [change,setChange] = useState(1)
     const [shimmer,setShimmer] = useState(true)
     const isUser = useSelector((state)=>state.user).isUser
+    const cart = useSelector((state)=>state.cart)
 
 
     useEffect(()=>{
@@ -25,7 +27,7 @@ const Cart = () => {
         // else {
           setShimmer(true)
           dispatch(setLoading(true))
-          getCart()
+          dispatch(loadCart())
           .then(res=>{
             setData(res.data.cart)
             setShimmer(false)

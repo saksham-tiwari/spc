@@ -4,8 +4,11 @@ import styles from "./styles.module.css"
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { addToCart, removeFromCart } from '../../../server/services/user/user.service';
+import { useDispatch } from 'react-redux';
+import { removeCart } from '../../../server/redux/actions/cart';
 
 const Card3 = (props) => {
+    const dispatch = useDispatch()
     const [load,setLoad] = useState(false);
     const add = async()=>{
         props.setShimmer(true)
@@ -22,9 +25,9 @@ const Card3 = (props) => {
     const remove = async ()=>{
         props.setShimmer(true)
         setLoad(true)
-        if(quantity===1){
+        if(quantity<=1){
             console.log(props.item._id);
-            await removeFromCart(props.item._id)
+            await dispatch(removeCart(props.item._id,props.item.product._id))
             .then((res)=>{
                 props.setChange(prev=>(prev+1)%10)
                 props.removeProduct(props.index)

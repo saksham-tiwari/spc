@@ -5,30 +5,37 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useNavigate } from 'react-router-dom';
 import { BaseUrl } from '../../../server/services/BaseUrl';
-import { addToCart, isInCart, isInWishlist } from '../../../server/services/user/user.service';
+import { isInCart, isInWishlist } from '../../../server/services/user/user.service';
 import DoneSharpIcon from '@mui/icons-material/DoneSharp';
+import { useDispatch, useSelector } from 'react-redux';
+import { addCart } from '../../../server/redux/actions/cart';
 
 const Card2 = (props) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const loading = useSelector((state)=>state.loading).loading
+  const cart = useSelector((state)=>state.cart)
   
   const [isCart,setIsCart] = useState(false)
   const [isWishlist,setIsWishlist] = useState(false)
   const [cartLoad,setCartLoad] = useState(false)
   
   useEffect(()=>{
-    console.log(props.product);
-    isInCart(props.product._id)
-    .then((res)=>{setIsCart(res.data)
-    console.log(res);})
-    .catch((err)=>{console.log(err);})
-    isInWishlist(props.product._id)
-    .then((res)=>{setIsWishlist(res.data)
-    console.log(res);})
-    .catch((err)=>{console.log(err);})
-  },[])
+    // console.log(props.product);
+    // isInCart(props.product._id)
+    // .then((res)=>{setIsCart(res.data)
+    // console.log(res);})
+    // .catch((err)=>{console.log(err);})
+    // isInWishlist(props.product._id)
+    // .then((res)=>{setIsWishlist(res.data)
+    // console.log(res);})
+    // .catch((err)=>{console.log(err);})
+    console.log(cart.filter(x=>x.product._id===props.product._id).length?1:0);
+    if(cart.filter(x=>x.product._id===props.product._id).length) setIsCart(true)
+  },[loading])
   const add = ()=>{
     setCartLoad(true)
-    addToCart(props.product._id)
+    dispatch(addCart(props.product._id,false,props.product))
     .then((res)=>{console.log(res);
       setIsCart(true)
       setCartLoad(false)})

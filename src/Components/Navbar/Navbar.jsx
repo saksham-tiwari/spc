@@ -16,6 +16,7 @@ const Navbar = () => {
   const isUser = useSelector((state)=>state.user).isUser
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const cart = useSelector((state)=>state.cart)
   const [name,setName] = useState("")
   useEffect(() => {
     console.log(isUser);
@@ -59,7 +60,7 @@ const Navbar = () => {
     
       <ul className="navbar-nav mb-2 mb-lg-0 ">
         {isUser&&<><li className="nav-item">
-          <Link className="nav-link" aria-current="page" to="/cart"><ShoppingCartOutlinedIcon/></Link>
+          <Link className="nav-link" aria-current="page" to="/cart"><ShoppingCartOutlinedIcon/>{cart.length?<span class='badge badge-warning' id='lblCartCount'> {cart.length} </span>:<></>}</Link>
         </li>
         {/* <li className="nav-item">
           <Link className="nav-link" to="/"><FavoriteBorderOutlinedIcon/></Link>
