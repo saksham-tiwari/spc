@@ -3,6 +3,7 @@ import { signout } from "../../redux/actions/user";
 // import { logout } from "../auth/auth.service";
 import {BaseUrl} from "../BaseUrl";
 import accessHeader from "../Header";
+import store from "../../redux/store"
 
 axios.defaults.baseURL = BaseUrl;
 axios.interceptors.response.use(function (response) {
@@ -12,8 +13,8 @@ axios.interceptors.response.use(function (response) {
   }, function (error) {
     //   if(error.response.config.url)
     const isCart = error.response.config.url.split("/")[2].slice(0,4)==="cart";
-    if (401 === error.response.status && !isCart) signout(true)
-    else if(401 === error.response.status && isCart) signout(false)
+    if (401 === error.response.status && !isCart) store.dispatch(signout(true))
+    else if(401 === error.response.status && isCart) store.dispatch(signout(false))
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
     return Promise.reject(error);
