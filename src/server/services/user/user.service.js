@@ -162,3 +162,14 @@ export const generateQr = async (paymentId)=>{
         return Promise.reject(err)
     })
 }
+
+export const ratingReview = async (productId,rating,review)=>{
+    return await axios.post("/user/ratingandreview/"+productId,{rating,review},accessHeader())
+    .then((res)=>{
+        return Promise.resolve(res.data)    
+    })
+    .catch((err)=>{
+        console.log(err);
+        return Promise.reject(err)
+    })
+}

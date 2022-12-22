@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Ratings from './Ratings/Ratings'
 import styles from "./styles.module.css"
 
 const DescBlock = (props) => {
@@ -10,7 +11,7 @@ const DescBlock = (props) => {
           <h2 className={active===1&&`${styles.active}`} onClick={()=>setActive(1)}>Reviews and Ratings</h2>
         </div>
         {active===0&&<div className={`${styles.desc} empText`}>{props.data.description}</div>}
-        {active===1&&<div></div>}
+        {active===1&&<Ratings {...props}/>}
     </div>
   )
 }

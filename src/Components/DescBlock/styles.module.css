@@ -37,3 +37,23 @@
     line-height: 130.4%;
     letter-spacing: 1.25px;
 }
+
+.formRating{
+    width: 30rem;
+}
+
+.formRating textarea{
+    border: 0px;
+    background-color: var(--secondary);
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+.formRating textarea:focus{
+    outline: 1px var(--primary) solid;
+}
+
+.formRating button{
+    padding: 10px;
+    width: 10rem;
+}
