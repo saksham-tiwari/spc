@@ -6,14 +6,15 @@ import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import QrCode2OutlinedIcon from '@mui/icons-material/QrCode2Outlined';
 import { generateQr } from '../../server/services/user/user.service';
 import Qrcode from './Qrcode';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setLoading } from '../../server/redux/actions/loading';
 
 const OrderView = (props) => {
     const [qrValue,setQrValue] = useState("")
+    const loading = useSelector((state)=>state.loading).loading
     useEffect(()=>{
         console.log(props);
-    },[])
+    },[props])
 
     const dispatch = useDispatch()
     const generate = (print=false)=>{
@@ -38,9 +39,9 @@ const OrderView = (props) => {
     }
   return (
     <div className={styles.orderView} id="section-to-print">
-        <h2>
+        {props.data?<><h2>
             Order Id {'#'}{props.data.razorpay.id.split("_")[1]}
-            <span className={styles.capsule}>Delivered</span>
+            <span className={styles.capsule} style={props.data.status.toLowerCase()==="delivered"?{}:{backgroundColor:"rgba(240, 195, 98,0.2)",color:"rgba(240, 195, 98)"}}>{props.data.status[0].toUpperCase()+props.data.status.slice(1)}</span>
             {/* <span className={styles.price}>Rs.{(props.data.amount)/100}</span> */}
         </h2>
         <h3>{props.data.Item.length} items</h3>
@@ -59,7 +60,7 @@ const OrderView = (props) => {
         <div className={styles.buttonDiv} id="dont-print">
         <button className="sec-btn" onClick={()=>generate(true)} style={{border: "1px solid #E6E7E7"}}><FileDownloadOutlinedIcon/>Download invoice</button>
         <button className="prim-btn" onClick={()=>generate(false)} disabled={qrValue.length>0}><QrCode2OutlinedIcon/>Show QR</button>
-        </div>
+        </div></>:<div style={{height:"200px"}}></div>}
 
     </div>
   )

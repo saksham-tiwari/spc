@@ -13,7 +13,7 @@ const Card4 = (props) => {
     <div className={styles.card}>
         <h2>
         Order Id {'#'}{props.data.razorpay.id.split("_")[1]}
-        <span className={styles.capsule}>Delivered</span>
+        <span className={styles.capsule} style={props.data.status.toLowerCase()==="delivered"?{}:{backgroundColor:"rgba(240, 195, 98,0.2)",color:"rgba(240, 195, 98)"}}>{props.data.status[0].toUpperCase()+props.data.status.slice(1)}</span>
         <span className={styles.price}>Rs.{(props.data.amount)/100}</span>
         </h2>
         <p className='empText'>No. of items : {props.data.Item.length}</p>

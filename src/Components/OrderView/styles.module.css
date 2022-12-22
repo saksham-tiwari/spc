@@ -30,6 +30,8 @@
     font-weight: 700;
     margin-left: 0.5rem;
     color: var(--primary);
+    text-transform: capitalize !important;
+    /* text-transform: uppercase; */
 }
 
 .price{
