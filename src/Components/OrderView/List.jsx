@@ -3,20 +3,10 @@ import { getProdById } from '../../server/services/product/product.service'
 import styles from "./styles.module.css"
 import { useDispatch } from "react-redux";  
 import { setLoading } from '../../server/redux/actions/loading';
+import { useNavigate } from 'react-router-dom';
 
 const List = (props) => {
-    // const [data,setData] = useState({
-    //     "_id": "6383bc48e95fc6b72f8416e5",
-    //     "name": "Soap",
-    //     "category": "Soap",
-    //     "quantity": 0,
-    //     "price": 0,
-    //     "imageUrl": [
-    //         "/public/image.jpg"
-    //     ],
-    //     "eachrating": [],
-    //     "__v": 0
-    // })
+    const navigate = useNavigate()
     const [data,setData] = useState([])
 
     const dispatch = useDispatch()
@@ -34,7 +24,7 @@ const List = (props) => {
             console.log(err);})
     },[])
   return (
-    <div className={styles.list}>
+    <div className={styles.list} onClick={()=>{navigate(`/product/${data._id}`)}}>
         {data.length!==0?<><div style={{flex:"1"}}>
             <img className={styles.prodImg} src={data.imageUrl[0]} alt="product"></img>
         </div>

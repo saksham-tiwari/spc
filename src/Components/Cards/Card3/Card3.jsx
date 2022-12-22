@@ -6,9 +6,11 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import { addToCart, removeFromCart } from '../../../server/services/user/user.service';
 import { useDispatch } from 'react-redux';
 import { removeCart } from '../../../server/redux/actions/cart';
+import { useNavigate } from 'react-router-dom';
 
 const Card3 = (props) => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const [load,setLoad] = useState(false);
     const add = async()=>{
         props.setShimmer(true)
@@ -45,13 +47,16 @@ const Card3 = (props) => {
         props.setShimmer(false)
         setLoad(false)
     }
+    const toProd = ()=>{
+        navigate(`/product/${props.item.product._id}`)
+    }
 
     const [quantity,setQuantity] = useState(props.quantity);
   return (
     <div className={styles.card}>
-        <img src={BaseUrl+props.item.product.imageUrl[0]} alt="product"></img>
+        <img onClick={toProd} src={BaseUrl+props.item.product.imageUrl[0]} alt="product"></img>
         <div className={styles.two}>
-            <h3>{props.item.product.name}</h3>
+            <h3 onClick={toProd}>{props.item.product.name}</h3>
             <div className={styles.plusMinus}>
                 <button onClick={remove} disabled={load}><RemoveIcon/></button>
                 <span>{load?<div className="spinner-border spinner-border-sm" role="status"></div>:quantity}</span>

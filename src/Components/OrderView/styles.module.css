@@ -97,7 +97,7 @@
     margin-bottom: 1.5rem;
     border-top: 1px solid rgba(233, 242, 241, 0.7);
     border-radius: .5rem;
-
+    cursor: pointer;
 }
 
 .list .prodImg{
