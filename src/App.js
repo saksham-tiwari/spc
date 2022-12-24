@@ -9,6 +9,8 @@ import { loadCart } from "./server/redux/actions/cart";
 function App() {
   const loading = useSelector((state)=>state.loading).loading
   const dispatch = useDispatch()
+  const isUser = useSelector((state)=>state.user).isUser||localStorage.getItem("token")
+
 
   useEffect(()=>{
     console.log(localStorage.getItem("token"));
@@ -23,7 +25,7 @@ function App() {
       dispatch(loadCart())
       dispatch(setUser(true))}
     else dispatch(setUser(false))
-  },[])
+  },[isUser])
   return (
     <div>
       {loading && <Spinner />}
