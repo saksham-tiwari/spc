@@ -48,3 +48,15 @@
     flex-wrap: wrap;
     gap: 0rem 1.5rem;
 }
+
+@media only screen and (max-width:768px){
+    .filterBlock {
+        display: none;
+        visibility: hidden;
+    }
+    .prodsBlock{
+        margin-left: 0 !important;
+        align-items: center;
+        justify-content: center;
+    }
+}

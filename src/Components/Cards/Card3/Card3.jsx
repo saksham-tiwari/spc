@@ -15,11 +15,22 @@ const Card3 = (props) => {
     const add = async()=>{
         props.setShimmer(true)
         setLoad(true)
+        if(quantity<1){
+            console.log(props.item._id);
+            await dispatch(removeCart(props.item._id,props.item.product._id))
+            .then((res)=>{
+                props.setChange(prev=>(prev+1)%10)
+                props.removeProduct(props.index)
+                console.log(res);})
+            .catch((err)=>{console.log(err);})
+        }
+        else{
         await addToCart(props.item.product._id)
         .then((res)=>{
             props.setChange(prev=>(prev+1)%10)
             console.log(res);})
         .catch((err)=>{console.log(err);})
+        }
         setQuantity(quantity+1)
         props.setShimmer(false)
         setLoad(false)
