@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from "./styles.module.css"
-import StarBorderIcon from '@mui/icons-material/StarBorder';
+// import StarBorderIcon from '@mui/icons-material/StarBorder';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -17,7 +17,7 @@ const Card4 = (props) => {
         <span className={styles.price}>Rs.{(props.data.amount)/100}</span>
         </h2>
         <p className='empText'>No. of items : {props.data.Item.length}</p>
-        <p>Rate your experience <StarBorderIcon/> <StarBorderIcon/> <StarBorderIcon/> <StarBorderIcon/> <StarBorderIcon/></p>
+        {/* <p>Rate your experience <StarBorderIcon/> <StarBorderIcon/> <StarBorderIcon/> <StarBorderIcon/> <StarBorderIcon/></p> */}
         <button className="sec-btn" onClick={redirect}>View Details</button>
     </div>
   )

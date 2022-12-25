@@ -1,4 +1,4 @@
-import StarBorderIcon from '@mui/icons-material/StarBorder'
+// import StarBorderIcon from '@mui/icons-material/StarBorder'
 import React, { useEffect, useState } from 'react'
 import List from './List'
 import styles from "./styles.module.css"
@@ -49,7 +49,7 @@ const OrderView = (props) => {
             {props.data.Item.map((ele)=><List data = {ele}/>)}
             {/* <List/> */}
         </div>
-        <p className={styles.rating}>Rate your experience <StarBorderIcon/> <StarBorderIcon/> <StarBorderIcon/> <StarBorderIcon/> <StarBorderIcon/></p>
+        {/* <p className={styles.rating}>Rate your experience <StarBorderIcon/> <StarBorderIcon/> <StarBorderIcon/> <StarBorderIcon/> <StarBorderIcon/></p> */}
         <h3>Bill details</h3>
         <div className={styles.bill}>
             <h4 className='empText'>M.R.P. <span>Rs. {(props.data.amount)/100+10}</span></h4>

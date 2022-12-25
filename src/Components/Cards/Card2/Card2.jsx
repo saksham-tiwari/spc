@@ -9,6 +9,7 @@ import { isInCart, isInWishlist } from '../../../server/services/user/user.servi
 import DoneSharpIcon from '@mui/icons-material/DoneSharp';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCart } from '../../../server/redux/actions/cart';
+import StarBorder from '@mui/icons-material/StarBorder';
 
 const Card2 = (props) => {
   const navigate = useNavigate();
@@ -49,6 +50,7 @@ const Card2 = (props) => {
     <div className={styles.card}>
       <img src={BaseUrl + props.product.imageUrl[0]} alt="product" onClick={()=>navigate(`/product/${props.product._id}`)} style={{cursor:"pointer"}}></img>
       <h3 onClick={()=>navigate(`/product/${props.product._id}`)} style={{cursor:"pointer"}}>{props.product.name}</h3>
+      <h3 style={{cursor:"pointer"}} className={`empText ${styles.avg}`}><StarBorder/>{props.product.avgrating}<span>({props.product.eachrating.length})</span></h3>
       <p>Rs.{props.product.price}</p>
       <div className='d-flex align-items-center justify-content-between' style={{gap:"0.5rem"}}>
         {/* <button className="prim-btn" onClick={add}>{!isCart?("Add to Cart"):("Go To Cart")}</button> */}
