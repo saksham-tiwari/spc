@@ -50,3 +50,10 @@
     align-items: center;
 }
 
+@media only screen and (max-width:876px){
+    .prodDetails{
+        position: relative;
+        margin: auto;
+        left: 0;
+    }
+}

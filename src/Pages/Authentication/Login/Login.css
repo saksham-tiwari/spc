@@ -139,3 +139,13 @@
     }
   }
   
+
+  @media only screen and (max-width:768px){
+    .left-side{
+        visibility: hidden;
+    }
+    /* .right-side{
+        margin-right: 30vw;
+        position: relative;
+    } */
+}

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import img from "../../../Assets/login.svg"
 import "./Otp.css"
 import KeyIcon from '@mui/icons-material/Key';
@@ -11,6 +11,8 @@ import { setUser } from '../../../server/redux/actions/user';
 
 const Otp = () => {
     let location = useLocation()
+    const [isMobile,setIsMobile] = useState(false);
+
     const navigate = useNavigate()
     const dispatch = useDispatch()
     useEffect(()=>{
@@ -38,13 +40,27 @@ const Otp = () => {
             dispatch(setLoading(false))
             console.log(err);})
     }
+    useEffect(() => {
+        if(window.outerWidth<=768){
+          setIsMobile(true)
+        }
+        else setIsMobile(false)
+      }, []); 
+  
+      //function to keep check of mobile screen
+      window.addEventListener("resize",()=>{
+        if(window.outerWidth<=768){
+            setIsMobile(true)
+        }
+        else setIsMobile(false)
+      })
     return (<>
         <div className='Page-content'>
-            <div className='left-side'>
+            {!isMobile&&<div className='left-side'>
                 <div className='login-image-pos'>
                     <img id='login-image' src={img} alt='login' />
                 </div>
-            </div>
+            </div>}
             <div className='right-side'>
                 <div className='form'>
                     <div className='login-heading'>

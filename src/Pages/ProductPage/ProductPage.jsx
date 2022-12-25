@@ -10,6 +10,8 @@ import styles from "./styles.module.css"
 
 const ProductPage = () => {
     const location = useLocation();
+    const [isMobile,setIsMobile] = useState(false);
+
     const [data,setData] = useState({
         "_id": "637fb18384e31878f1f16f00",
         "name": "Neem Soa",
@@ -34,11 +36,27 @@ const ProductPage = () => {
             dispatch(setLoading(false))
             console.log(err)})
     },[location])
+
+    useEffect(() => {
+        if(window.outerWidth<=876){
+          setIsMobile(true)
+        }
+        else setIsMobile(false)
+      }, []); 
+  
+      //function to keep check of mobile screen
+      window.addEventListener("resize",()=>{
+        if(window.outerWidth<=876){
+            setIsMobile(true)
+        }
+        else setIsMobile(false)
+      })
   return (
     <div>
         <p className={styles.toptext}>Products / {data.name} </p>
-        <ProdDetails data={data}/>
+        {!isMobile&&<ProdDetails data={data}/>}
         <ProdDisplay data={data}/>
+        {isMobile&&<ProdDetails data={data}/>}
         <DescBlock data={data}/>
     </div>
   )
