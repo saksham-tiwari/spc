@@ -5,6 +5,10 @@ import { Rating } from 'react-simple-star-rating'
 import { setLoading } from '../../../server/redux/actions/loading'
 import { ratingReview } from '../../../server/services/user/user.service'
 import styles from "../styles.module.css"
+import { message } from 'antd'
+import RatingList from './RatingList'
+import StarIcon from '@mui/icons-material/Star';
+
 
 const Ratings = (props) => {
     const [rating, setRating] = useState(0)
@@ -25,19 +29,30 @@ const Ratings = (props) => {
 
   const submit = (e)=>{
     e.preventDefault()
-    dispatch(setLoading(true))
-    ratingReview(props.data._id,rating,review)
-    .then((res)=>{
-        console.log(res);
-        dispatch(setLoading(false))
-    })
-    .catch((err)=>{
-        console.log(err);
-        dispatch(setLoading(false))
-    })
+    if(rating===0)message.error("Rating Required")
+    else if(review==="") message.error("Must have a review")
+    else{
+      dispatch(setLoading(true))
+      ratingReview(props.data._id,rating,review)
+      .then((res)=>{
+          console.log(res);
+          dispatch(setLoading(false))
+          message.success("Review submitted!")
+          setRating(0)
+          setReview("")
+      })
+      .catch((err)=>{
+          console.log(err);
+          setRating(0)
+          setReview("")
+          dispatch(setLoading(false))
+      })
+    }
+    
   }
 
   return (
+    <>
     <form className={styles.formRating} onSubmit={submit}>
         <h3>Rate and Review the product:</h3>
         <Rating
@@ -51,8 +66,19 @@ const Ratings = (props) => {
         <br/>
         <textarea placeholder='Your thoughts...' rows="4" cols="50" value={review} onChange={e=>setReview(e.target.value)}/>
         <br/>
+
         <button type="submit" className='prim-btn'>Submit</button>
     </form>
+    <br/>
+    <div>
+      <h1 className={styles.avg}><StarIcon fontSize="large"/>{props.data.avgrating} </h1>
+      <p className='empText'>&emsp;&emsp;Average User Ratings</p>
+      <div className={styles.reviews}>
+        {props.data.eachrating.map(rate=><RatingList review={rate}/>)}
+      </div>
+    </div>
+    </>
+
   )
 }
 

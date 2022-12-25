@@ -58,8 +58,60 @@
     width: 10rem;
 }
 
+.ratings{
+    border: 1px solid #E6E7E7;
+    border-radius: 8px;
+    padding: 24px 16px;
+    font-weight: 600;
+}
+
+.ratings h3{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.ratings p{
+    font-size: 0.8rem;
+}
+
+.ratings svg,.avg svg{
+    color: #F3C117;
+    margin-bottom: 5px;
+}
+
+.avg{
+    margin-top: 3rem;
+}
+
+.ratings h2{
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.reviews{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.descBlock textarea{
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    width: 35rem;
+    height: 7rem;
+}
+
 @media only screen and (max-width:876px){
     .descBlock{
         width: 100%;
     }
+
+    .descBlock textarea{
+        width: 20rem;
+    }
+
+    .formRating{
+        margin-left: 50%;
+        transform: translate(-35%);
+    }
+
 }
