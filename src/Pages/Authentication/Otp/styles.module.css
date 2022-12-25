@@ -1,0 +1,94 @@
+.loginBox{
+    width: 38rem;
+    background-color: white;
+    height: fit-content;
+    margin-left: 50%;
+    transform: translate(-50%);
+    padding: 6.5rem;
+}
+
+.loginBox .head{
+    text-align: center;
+}
+
+.formLogin>div{
+    width: 100%;
+}
+
+.formLogin input, .formLogin span{
+    background: #F7F7F7;
+    
+}
+
+.formLogin input{
+    border-radius: 0px 0.5rem 0.5rem 0px;
+}
+
+.formLogin span{
+    padding-right: 8px;
+}
+
+.formLogin label{
+    display: block !important;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.formLogin .eye{
+    background: transparent;
+    position: absolute;
+    right: 7.5rem;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.formLogin input:focus{
+    border: 1px solid #F7F7F7 !important;
+    /* outline: none !important; */
+    box-shadow: none !important;
+}
+
+.formLogin button{
+    width: 100%;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.formLogin .forgot{
+    color: var(--primary);
+    font-size: 0.875rem;
+    font-weight: 400;
+}
+
+.dont{
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.dont a{
+    display: block;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.dont a{
+    color: var(--primary);
+}
+
+@media only screen and (max-width:1080px){
+    .loginBox{
+        width: 55rem;
+    }    
+}
+
+@media only screen and (max-width:560px){
+    .loginBox{
+        width: 100%;
+    }    
+}

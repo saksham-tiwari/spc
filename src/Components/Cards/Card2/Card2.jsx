@@ -10,6 +10,7 @@ import DoneSharpIcon from '@mui/icons-material/DoneSharp';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCart } from '../../../server/redux/actions/cart';
 import StarBorder from '@mui/icons-material/StarBorder';
+import { message } from 'antd';
 
 const Card2 = (props) => {
   const navigate = useNavigate();
@@ -39,8 +40,10 @@ const Card2 = (props) => {
     dispatch(addCart(props.product._id,false,props.product))
     .then((res)=>{console.log(res);
       setIsCart(true)
+      message.success("Added to cart!")
       setCartLoad(false)})
     .catch((err)=>{
+      message.error("Failed!")
       setCartLoad(false)
       if(err.response.status===401) navigate("/login") 
       console.log(err);})
