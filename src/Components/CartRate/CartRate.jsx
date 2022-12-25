@@ -146,7 +146,7 @@ const checkout = async function(e){
             </Row>
             <Row className={styles.row}>
                 <Col>Convenience Fees</Col>
-                <Col className={styles.second}>Free</Col>
+                <Col className={styles.second} style={{color:"var(--primary)"}}>Free</Col>
             </Row>
             <hr className={styles.dashed}></hr>
             <Row className={styles.row}>

@@ -1,10 +1,9 @@
 .cartRate{
-    width: 26.3125rem;
+    width: 32%;
     height: 28.875rem;
     background-color: white;
     position: fixed;
-    left: 62.6875rem;
-    /* top: 152px; */
+    right: 6.5rem;
     padding: 1.5rem;
     border-radius: 0.5rem;
     height: fit-content;
@@ -15,9 +14,9 @@
     width: 100%;
 }
 
-.second{
+.cartRate .container .second{
     font-weight: 700;
-    float: right;
+    text-align: right;
 }
 
 .cartRate .container .row{
@@ -31,4 +30,72 @@
 
 .cartRate button{
     width: 100%;
+}
+
+
+/* @media only screen and (max-width:2560px) {
+    .cartRate{
+      font-size: 100%;
+    }
+  }
+  @media only screen and (max-width:2180px) {
+    .cartRate{
+      font-size: 100%;
+    }
+  }
+  @media only screen and (max-width:1990px) {
+    .cartRate{
+      font-size: 100%;
+    }
+  }
+  @media only screen and (max-width:1840px) {
+    .cartRate{
+      font-size: 100%;
+    }
+  }
+  @media only screen and (max-width:1696px) {
+    .cartRate{
+      font-size: 100%;
+    }
+  }
+  @media only screen and (max-width:1548px) {
+    .cartRate{
+      font-size: 100%;
+    }
+  }
+  @media only screen and (max-width:1474px) {
+    .cartRate{
+      font-size: 100%;
+    }
+  }
+  @media only screen and (max-width:1245px) {
+    .cartRate{
+      font-size: 100%;
+    }
+  }
+  @media only screen and (max-width:1110px) {
+    .cartRate{
+      font-size: 100%;
+    }
+  }
+  @media only screen and (max-width:986px) {
+    .cartRate{
+      font-size: 100%;
+    }
+  } */
+  
+@media only screen and (max-width:768px){
+    .cartRate{
+        position: relative;
+        right: 0;
+        margin: auto;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width:400px){
+    .cartRate{
+        width: 100%;
+
+    }
 }

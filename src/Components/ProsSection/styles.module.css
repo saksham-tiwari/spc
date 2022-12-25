@@ -9,4 +9,10 @@
 .prosSec .cardDiv{
     overflow-x: scroll;
     overflow-y: hidden;
+    margin-bottom: 3.5rem;
+
+}
+
+.prosSec>div::-webkit-scrollbar {
+    height: 10px;
 }

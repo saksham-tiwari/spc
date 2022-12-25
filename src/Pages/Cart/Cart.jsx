@@ -17,6 +17,7 @@ const Cart = () => {
     const [data,setData] = useState([])
     const [change,setChange] = useState(1)
     const [shimmer,setShimmer] = useState(true)
+    const [isMobile,setIsMobile] = useState(false);
     const isUser = useSelector((state)=>state.user).isUser
     const cart = useSelector((state)=>state.cart)
 
@@ -41,6 +42,21 @@ const Cart = () => {
         // }
     },[])
 
+    useEffect(() => {
+      if(window.outerWidth<=768){
+        setIsMobile(true)
+      }
+      else setIsMobile(false)
+    }, []); 
+
+    //function to keep check of mobile screen
+    window.addEventListener("resize",()=>{
+      if(window.outerWidth<=768){
+          setIsMobile(true)
+      }
+      else setIsMobile(false)
+    })
+
     useEffect(()=>{
       if(data.length===0){
 
@@ -64,8 +80,10 @@ const Cart = () => {
         <img src={empty} alt="emptyCart"></img>
         </div>
       </div>}
-      {data.length!==0&&<CartRate shimmer={shimmer} setShimmer={setShimmer} data={data} change={change}/>}
+      {(!isMobile&&data.length!==0)&&<CartRate shimmer={shimmer} setShimmer={setShimmer} data={data} change={change}/>}
       {data.map((item,i)=><Card3 shimmer={shimmer} setShimmer={setShimmer} item={item} quantity={item.quantity} index={i} removeProduct={removeProduct} setChange={setChange}/>)}
+      {(isMobile&&data.length!==0)&&<CartRate shimmer={shimmer} setShimmer={setShimmer} data={data} change={change}/>}
+
     </div>
   )
 }

@@ -1,5 +1,5 @@
 .card{
-    width: 54.625rem;
+    width: 60%;
     height: 11.25rem;
     padding: 1.5rem;
     background-color: white;
@@ -54,4 +54,10 @@
 .plusMinus button{
     background: none;
     border: none;
+}
+
+@media only screen and (max-width:768px){
+    .card{
+        width: 100%;
+    }
 }

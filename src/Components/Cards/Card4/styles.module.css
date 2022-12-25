@@ -1,11 +1,15 @@
 .card{
     padding: 1.5rem 1.5rem 1rem;
-    width: 61rem;
+    /* width: 61rem; */
+    /* width: 70%; */
+    width: 62vw;
     height: fit-content;
     background: #FFFFFF;
     border-radius: 0.5rem;
     margin-bottom: 1.5rem;
-    margin-left: 21.0625rem;
+    margin-left: auto;
+    /* margin-right: 6.5rem; */
+    /* margin-left: 21.0625rem; */
 }
 
 .card h2{
@@ -51,4 +55,21 @@
 .card svg{
     color: #F3C117;
     cursor: pointer;
+}
+
+@media only screen and (max-width:600px){
+    .card{
+        width: 100%;
+    }
+}
+
+
+@media only screen and (max-width:380px){
+    .card h2{
+        font-size: 1.20rem;
+    }
+
+    .price{
+        font-size: 1.20rem;
+    }
 }
