@@ -62,15 +62,6 @@
     font-weight: 400;
 }
 
-.forgo button{
-    background: transparent;
-    border: none;
-}
-
-.forgo button:disabled{
-    color: var(--empText);
-}
-
 .dont{
     text-align: center;
     margin-top: 3rem;

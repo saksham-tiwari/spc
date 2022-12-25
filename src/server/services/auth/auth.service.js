@@ -25,6 +25,17 @@ export const login = async (data)=>{
     })
 }
 
+export const forgotPass = async (data)=>{
+    return await axios.post("/auth/forgot-password",data)
+    .then((res)=>{
+        return Promise.resolve(res.data)
+    })
+    .catch((err)=>{
+        console.log(err);
+        return Promise.reject(err)
+    })
+}
+
 export const otp = async (email,otp)=>{
     return await axios.post("/auth/otp-verify",{email,otp})
     .then((res)=>{
@@ -35,6 +46,29 @@ export const otp = async (email,otp)=>{
         return Promise.reject(err)
     })
 }
+
+export const resendOtp = async (data)=>{
+    return await axios.post("/auth/otp",data)
+    .then((res)=>{
+        return Promise.resolve(res.data)
+    })
+    .catch((err)=>{
+        console.log(err);
+        return Promise.reject(err)
+    })
+}
+
+export const changePass = async (data)=>{
+    return await axios.post("/auth/set-password",data)
+    .then((res)=>{
+        return Promise.resolve(res.data)
+    })
+    .catch((err)=>{
+        console.log(err);
+        return Promise.reject(err)
+    })
+}
+
 
 export const logout = (cond)=>{
     localStorage.clear()

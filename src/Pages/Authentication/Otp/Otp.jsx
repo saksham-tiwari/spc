@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from "./styles.module.css"
 import { useDispatch } from 'react-redux';
-import { otp } from '../../../server/services/auth/auth.service';
+import { otp, resendOtp } from '../../../server/services/auth/auth.service';
 import { setLoading } from '../../../server/redux/actions/loading';
 import { setUser } from '../../../server/redux/actions/user';
 import { message } from 'antd';
@@ -14,6 +14,7 @@ import "./Otp.css"
 const Otp = () => {
     let location = useLocation()
     const [isMobile,setIsMobile] = useState(false);
+    const [resen,setResen] = useState(false);
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -21,6 +22,12 @@ const Otp = () => {
         console.log(location);
         if(location.state===null) navigate("/signup")
     },[location])
+
+    useEffect(()=>{
+        setTimeout(()=>{
+            setResen(true)
+        },60000)
+    },[])
     const submit = (e)=>{
         e.preventDefault();
         const myFormData = new FormData(e.target);
@@ -31,10 +38,16 @@ const Otp = () => {
         otp(location.state.email,formDataObj.otp)
         .then((res)=>{
             console.log(res);
-            localStorage.setItem("user",JSON.stringify(res.data.user))
-            localStorage.setItem("token",res.data.token)
+
+            if(location.state.type==="forgot"){
+                navigate("/change-password",{ state: { email: location.state.email } })
+            }
+            else{
+                localStorage.setItem("user",JSON.stringify(res.data.user))
+                localStorage.setItem("token",res.data.token)
+                dispatch(setUser(true))
+            }
             dispatch(setLoading(false))
-            dispatch(setUser(true))
             // props.setUser(true)
             // navigate("/")
         })
@@ -42,6 +55,20 @@ const Otp = () => {
             if(err.response.status===404) message.error("Incorrect OTP")
             dispatch(setLoading(false))
             console.log(err);})
+}
+
+const resend = ()=>{
+    resendOtp({email:location.state.email})
+    .then((res)=>{
+        message.success("Otp Resent!")
+        console.log(res);
+        setResen(false)
+        setTimeout(()=>{setResen(true)},60000)
+    })
+    .catch((err)=>{
+        message.error("Otp cannot be resent!")
+        console.log(err)
+    })
 }
 useEffect(() => {
     if(window.outerWidth<=768){
@@ -79,6 +106,8 @@ useEffect(() => {
                 </div>
                     {/* <p className='alerts'>{errors.password?.message}</p> */}
                     <br/>
+                <div className={styles.forgo}><button disabled={!resen} onClick={resend} className={styles.forgot}>Resend Otp</button></div>
+
             </div> 
 
             <button className='prim-btn' type='submit'>Submit</button>

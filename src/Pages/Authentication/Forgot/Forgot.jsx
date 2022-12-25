@@ -3,20 +3,17 @@ import React, { useState } from 'react'
 import styles from "./styles.module.css"
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { login } from '../../../server/services/auth/auth.service';
+import { forgotPass } from '../../../server/services/auth/auth.service';
 import { setLoading } from '../../../server/redux/actions/loading';
-import { setUser } from '../../../server/redux/actions/user';
 import { message } from 'antd';
-import LockIcon from '@mui/icons-material/Lock';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import { Link } from 'react-router-dom';
-import "./Login.css"
+import { Link, useNavigate } from 'react-router-dom';
+// import "./Login.css"
 
-const Login = () => {
+const Forgot = () => {
     const [toggle, setToggle] = useState(false);
     const [isMobile,setIsMobile] = useState(false);
 
+    const navigate = useNavigate();
     const dispatch = useDispatch()
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
@@ -27,18 +24,15 @@ const Login = () => {
         console.log(data);
         dispatch(setLoading(true))
 
-        login(data)
+        forgotPass(data)
             .then((res) => {
                 console.log(res);
                 dispatch(setLoading(false))
-                localStorage.setItem("user", JSON.stringify(res.data))
-                localStorage.setItem("token", res.data.token)
-                dispatch(setUser(true))
+                navigate("/otp", { state: { email: data.email, type:"forgot" } })
                 // props.setUser(true)
             })
             .catch((err) => { 
-                if(err.response.status===401) message.error("Incorrect Password!")
-                if(err.response.status===404) message.error("Invalid user! Create an account.")
+                if(err.response.status===404) message.error("Account with given email doesn't already exist!")
                 console.log(err);
                 dispatch(setLoading(false))
             })
@@ -47,8 +41,8 @@ const Login = () => {
   return (
     <div className={styles.loginBox}>
         <div className={styles.head}>
-            <h1>Welcome Back</h1>
-            <p className='empText'>Please enter your email and password to log in your account.</p>
+            <h1>Forgot Your Password?</h1>
+            <p className='empText'>No worries, just reset it.</p>
         </div>
         <form className={`d-flex mr-auto ml-auto flex-wrap ${styles.formLogin}`} onSubmit={handleSubmit(onSubmit)}>
             
@@ -65,7 +59,7 @@ const Login = () => {
                 </div>
                     <p className='alerts'>{errors.email?.message}</p>
             </div> 
-            <div className='d-flex flex-direction-column mb-4'>
+            {/* <div className='d-flex flex-direction-column mb-4'>
                 <label>
                     Password
                 </label>
@@ -87,10 +81,10 @@ const Login = () => {
                 </div>
                     <p className='alerts'>{errors.password?.message}</p>
                     <br/>
-                <div className={styles.forgo}><Link to="/forgot-password" className={styles.forgot}>Forgot Password?</Link></div>
-            </div> 
+                <div className={styles.forgot}>Forgot Password?</div>
+            </div>  */}
 
-            <button className='prim-btn' type='submit'>Log in</button>
+            <button className='prim-btn' type='submit'>Proceed</button>
 
 
         </form>
@@ -103,4 +97,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Forgot

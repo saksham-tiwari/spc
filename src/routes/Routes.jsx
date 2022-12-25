@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Navigate, Route, Routes } from 'react-router-dom'
+import ChangePassword from '../Pages/Authentication/ChangePassword/ChangePassword'
+import Forgot from '../Pages/Authentication/Forgot/Forgot'
 import Login from '../Pages/Authentication/Login/Login'
 import Otp from '../Pages/Authentication/Otp/Otp'
 import Register from '../Pages/Authentication/Register/Register'
@@ -44,6 +46,8 @@ const Router = () => {
           <Route exact path="/login" element={<Login/>}/>
           <Route exact path="/signup" element={<Register/>}/>
           <Route exact path="/otp" element={<Otp/>}/>
+          <Route exact path="/forgot-password" element={<Forgot/>}/>
+          <Route exact path="/change-password" element={<ChangePassword/>}/>
         </>}
 
         {/* Redirect to homepage if already logged in */}
