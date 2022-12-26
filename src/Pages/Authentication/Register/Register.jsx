@@ -94,7 +94,7 @@ const Register = () => {
                     <div class="input-group-prepend">
                         <span class="input-group-text"><PersonIcon/></span>
                     </div>
-                    <input className="form-control me-2 border-0" name="Name" type="text" placeholder='Name' {...register("Name", { required: "name is required", pattern: { value: /^[a-zA-Z]{1,}$/i, message: "this is not a valid name" } })} />
+                    <input className="form-control me-2 border-0" name="Name" type="text" placeholder='Name' {...register("Name", { required: "name is required", pattern: { value: /^[a-zA-Z]+([\s][a-zA-Z]+)*$/i, message: "this is not a valid name" } })} />
 
                 </div>
                     <p className='alerts'>{errors.Name?.message}</p>
