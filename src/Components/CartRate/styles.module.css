@@ -1,6 +1,5 @@
 .cartRate{
     width: 32%;
-    height: 28.875rem;
     background-color: white;
     position: fixed;
     right: 6.5rem;
@@ -83,6 +82,23 @@
       font-size: 100%;
     }
   } */
+  @media only screen and (max-width:1245px) {
+    .cartRate{
+      font-size: 32px;
+    }
+
+  
+  }
+  @media only screen and (max-width:986px) {
+    .cartRate{
+      font-size: 64px;
+    }
+
+    .cartRate .container{
+      margin-bottom: -30px;
+    }
+  
+  }
   
 @media only screen and (max-width:768px){
     .cartRate{

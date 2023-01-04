@@ -153,7 +153,6 @@ const checkout = async function(e){
                 <Col>Total Payable</Col>
                 <Col className={styles.second}>Rs.{total}</Col>
             </Row>
-
         </Container>}
         {shimmer?<ShimmerButton size="lg" width="100%"  className={styles.btnShimmer}/>:<button className='prim-btn' id="rzp-button1" onClick={checkout}>Proceed to Checkout</button>}
         {/* <ShimmerBadge width={"100%"} /> */}
