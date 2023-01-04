@@ -9,7 +9,7 @@ const TopBlock = () => {
   return (
     <div className={styles.topblock} style={{background:`url(${img})`, backgroundRepeat:"no-repeat", backgroundSize:"cover"}}>
         <div className={styles.textDiv}>
-            <h1>One stop shop for natural and herbal soaps</h1>
+            <h1>Sustainable Production Centre (Centre of Handmade Soaps)</h1>
             <button className='prim-btn' onClick={()=>navigate("/explore")}>Buy Products <ArrowForwardIcon/></button>
         </div>
     </div>

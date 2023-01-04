@@ -5,6 +5,7 @@ import Router from "./routes/Routes";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "./server/redux/actions/user";
 import { loadCart } from "./server/redux/actions/cart";
+import NavbarNew from "./Components/Navbar/NavbarNew";
 
 function App() {
   const loading = useSelector((state)=>state.loading).loading

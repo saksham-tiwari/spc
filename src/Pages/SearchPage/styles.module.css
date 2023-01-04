@@ -2,6 +2,11 @@
     font-weight: 600;
     font-size: 2.5rem;
     margin-bottom: 2rem;
+    margin-top: -10px;
+    padding-top: 10px;
+    background-color: var(--secondary);
+    display: block;
+    width: 100vw;
 }
 
 .page .fixed{

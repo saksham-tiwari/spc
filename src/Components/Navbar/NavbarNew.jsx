@@ -11,7 +11,7 @@ import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import { Menu } from '@mui/icons-material';
 
-const Navbar = () => {
+const NavbarNew = () => {
   const isUser = useSelector((state)=>state.user).isUser
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -51,7 +51,7 @@ const Navbar = () => {
             <input name="search" className="form-control me-2 border-0 search" type="search" placeholder="Search for products and more" aria-label="Search"/>
             <button className="btn btn-outline-success" type="submit">Search</button>
       </form>
-      <ul className='btns d-flex justify-content-end align-items-center web' style={{marginTop:"10px"}}>
+      <ul className='btns d-flex justify-content-end align-items-center web'>
         {isUser&&<><li className="nav-item">
           <Link className="nav-link" aria-current="page" to="/cart"><ShoppingCartOutlinedIcon/>{cart.length?<span class='badge badge-warning' id='lblCartCount'> {cart.length} </span>:<></>}</Link>
         </li>
@@ -119,4 +119,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default NavbarNew

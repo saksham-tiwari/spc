@@ -1,22 +1,12 @@
-.navbar{
-    height: 5.5rem;
-    font-size: 1.25rem;
-    z-index: 100;
-    position:fixed;
-    top: 0;
-    /* width:81.1rem; */
-    width: calc(100% - 13rem);
-    padding-left: 0;
-}
+
 .navbar-brand{
     font-size: 2.5rem;
     font-weight: 800;
     margin: 0;
-    margin-left: -10px;
 }
 .search{
     width: 33rem;
-    height: 3.5rem;
+    height: 5.5rem;
     border-radius: 0rem 0.5rem 0.5rem 0;
     padding-left: 0.5rem;
 }
@@ -34,10 +24,10 @@
 .search:focus{
     box-shadow: none;
 }
-.navbar .prim-btn{
+.navibar .prim-btn{
     width: 7.625rem;
     height: 3.4375rem;
-    padding: 0.6rem 1.5rem;
+    padding: 0.6rem 1rem;
     font-size: 1.25rem;
 }
 
@@ -66,8 +56,207 @@
       margin-left: -10px; 
   }
 
-@media only screen and (max-width:768px) {
-    .navbar{
+
+
+
+.navibar {
+    background: #F2F7F7;  
+    height: 5rem;
+    height: 5.5rem;
+    font-size: 1.25rem;
+    z-index: 100;
+    position:fixed;
+    top: 0;
+    /* /* width:81.1rem; */
+    width: calc(100% - 13rem);
+    padding-left: 0;
+  }
+  
+  .navibar div, .navibar ul{
+    flex: 2;
+  }
+  
+  .navibar form{
+    flex:3;
+    color: #BAC2C1;
+  }
+  
+  .navibar form input{
+    border-radius: 0px 8px 8px 0px;
+    height: 3.5rem;
+  }
+  
+  .navibar form input:focus{
+    box-shadow: none;
+  }
+  
+  .navibar .btns {
+    gap: 0.5rem;
+  }
+
+  .navibar .searchBtn svg, .navibar .hamBtn svg{
+    /* height: 30px !important; */
+    font-size: 30px;
+  }
+  
+  .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: var(--primary);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: var(--text);
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  .mySearch button{
+    display: none;
+  }
+  
+  .navibar .hamBtn{
+    display: none;
+  }
+  .navibar .searchBtn{
+    display: none;
+  }
+  /* .navibar .web{
+    display: inherit;
+  } */
+  
+  .mobile {
+    display: none !important;
+  }
+
+  .navibar ul{
+    list-style: none;
+  }
+  
+  .navibar .searchRow{
+    position: fixed;
+    top: 0rem;
+    left: 0;
+    background-color: var(--secondary);
+    height: 6rem;
+    width: 100%;
+    padding: 0.5rem;
+    z-index: -1 !important;
+    display: none;
+
+    /* display: flex; */
+  }
+
+  .navibar .searchRow .close{
+    /* z-index: -5; */
+    position: relative;
+    font-size: 32px;
+    background-color: transparent;
+    border: none;
+    padding: 0 !important;
+    font-weight: 700;
+    margin-right: 10px;
+    margin-top: -8px;
+  }
+
+
+  .navibar .searchRow form{
+    width: 75%;
+    z-index: -1;
+    font-size: 16px !important;
+  }
+
+  .navibar .searchRow form div{
+    height: 4rem;
+  }
+
+  .navibar .searchRow form div svg{
+    margin-top: 4px;
+    font-size: 20px;
+  }
+
+  .navibar .searchRow form input{
+    font-size: 16px;
+    height: 4rem;
+  }
+
+  .navibar .searchRow form button{
+    height: 4rem !important;
+    font-size: 14px;
+  }
+
+  .sidenav h1{
+    color: white;
+    font-weight: 700;
+    margin-left: 20px;
+  }
+
+  .sidenav a{
+    font-size: 2rem;
+    color: white;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .navibar .hamBtn{
+      display: block;
+    }
+    .navibar .searchBtn{
+      display: block;
+    }
+    .navibar .web{
+      display: none !important;
+    }
+    .mySearch {
+      display: none !important;
+      width: 0;
+    }
+    .open{
+        top : 5rem !important;
+        display: block !important;
+      /* width: 100px; */
+      /* flex: 8 !important; */
+    }
+  
+    .mobile{
+      display: inherit !important;
+    }
+    .mySearch button{
+      display: block;
+    }
+  }
+  
+
+  
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+  @media only screen and (max-width:768px) {
+    .navibar{
         width: calc(100% - 3.34rem);
     }
 }

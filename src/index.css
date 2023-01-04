@@ -122,6 +122,7 @@ code {
 }
 
 
+
 @media only screen and (max-width:2560px) {
   *{
     font-size: 165%;
@@ -161,15 +162,39 @@ code {
   *{
     font-size: 85%;
   }
+  
+  .ant-message{
+    font-size: 32px !important;
+  }
+
+  .ant-message svg{
+    font-size: 20px !important;
+  }
 }
 @media only screen and (max-width:1110px) {
   *{
     font-size: 70%;
   }
+  
+  .ant-message{
+    font-size: 64px !important;
+  }
+
+  .ant-message svg{
+    font-size: 20px !important;
+  }
 }
 @media only screen and (max-width:986px) {
   *{
     font-size: 60%;
+  }
+  
+  .ant-message{
+    font-size: 100px !important;
+  }
+
+  .ant-message svg{
+    font-size: 20px !important;
   }
 }
 
@@ -178,6 +203,8 @@ code {
     margin: 0 1.67rem;
     margin-top: 6rem;
   }
+  
+  
 }
 
 @media print {
