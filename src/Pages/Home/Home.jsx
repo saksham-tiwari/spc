@@ -18,8 +18,8 @@ const Home = () => {
   return (
   <>
     <TopBlock/>
-    <ProsSection/>
     <Products products={products}/>
+    <ProsSection/>
     <Aim/>
   </>
   )

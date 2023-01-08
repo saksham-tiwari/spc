@@ -60,7 +60,7 @@ const Login = () => {
                     <div class="input-group-prepend">
                         <span class="input-group-text"><Email/></span>
                     </div>
-                    <input className="form-control me-2 border-0" type="email" placeholder='xyz@akgec.ac.in' name="email" {...register("email", { required: "email is required", pattern: { value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i, message: "this is not a valid email" } })} />
+                    <input className="form-control me-2 border-0" type="email" placeholder='xyz@akgec.ac.in' name="email" {...register("email", { required: "email is required", pattern: { value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]{4,}[@][a][k][g][e][c][\.][a][c][\.][i][n]$/i, message: "this is not a valid email" } })} />
 
                 </div>
                     <p className='alerts'>{errors.email?.message}</p>

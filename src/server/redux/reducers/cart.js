@@ -10,7 +10,7 @@ const cart = (state = initialState, action) => {
       return  payload;
 
     case ADD_CART:
-        return [...state,payload];
+        return [...state,{quantity:1,product:payload,_id:"123456789"}];
     case REMOVE_CART:
         console.log(payload);
         return state.filter(s=>s.product._id!==payload)

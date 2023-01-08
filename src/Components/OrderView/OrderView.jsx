@@ -11,9 +11,17 @@ import { setLoading } from '../../server/redux/actions/loading';
 
 const OrderView = (props) => {
     const [qrValue,setQrValue] = useState("")
+    const [discount,setDiscount] = useState(15)
     const loading = useSelector((state)=>state.loading).loading
     useEffect(()=>{
-        console.log(props);
+        console.log(props,props.data===undefined);
+        if(props.data!==undefined){
+            let y=0
+            props.data.Item.forEach(x=>{
+                y+=x.quantity
+            })
+            setDiscount(y*15)
+        }
     },[props])
 
     const dispatch = useDispatch()
@@ -52,8 +60,8 @@ const OrderView = (props) => {
         {/* <p className={styles.rating}>Rate your experience <StarBorderIcon/> <StarBorderIcon/> <StarBorderIcon/> <StarBorderIcon/> <StarBorderIcon/></p> */}
         <h3>Bill details</h3>
         <div className={styles.bill}>
-            <h4 className='empText'>M.R.P. <span>Rs. {(props.data.amount)/100+10}</span></h4>
-            <h4 className='empText'>Discount <span>Rs. 10</span></h4>
+            <h4 className='empText'>M.R.P. <span>Rs. {(props.data.amount)/100+discount}</span></h4>
+            <h4 className='empText'>Discount <span>Rs. {discount}</span></h4>
             <h3>Total Price <span>Rs. {(props.data.amount)/100}</span></h3>
         </div>
         {qrValue.length>0&&<Qrcode value={qrValue}/>}

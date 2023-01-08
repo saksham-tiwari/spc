@@ -36,7 +36,7 @@ slider.addEventListener('mousemove', (e) => {
   },[])
   return (
     <div className={styles.products}>
-        <h1>Our products,<span className='empText'> Purely handmade.</span></h1>
+        <h1>Our products,<span className='empText'> Flat Rs.15/- off for AKGECians</span></h1>
         {props.products.length===0 && <div className={styles.empty}> <SearchIcon/> Listing products soon...</div>}
         <div className='d-flex align-items-center justify-content-between' id="products-slide">
         {props.products.map((product,i)=>{

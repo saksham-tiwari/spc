@@ -56,7 +56,7 @@ const ProdDetails = (props) => {
         <button className='sec-btn'>Add to Wishlist</button>
         <p className={styles.info}>
             <div style={{marginRight:"0.5rem"}}><InfoOutlinedIcon/></div>
-            <div> Additional Rs.10 off only for AKGECIANs </div>
+            <div> Additional Rs.15 off only for AKGECIANs </div>
         </p>
     </div>
   )
