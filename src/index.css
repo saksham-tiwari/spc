@@ -241,6 +241,13 @@ footer a:hover, footer a:visited{
     margin: 0 1.67rem;
     margin-top: 6rem;
   }
+
+  footer ul {
+    gap: 16px;
+  }
+  footer h3 b {
+    font-size: 1.5rem;
+  }
   
   
 }
