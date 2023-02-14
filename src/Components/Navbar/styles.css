@@ -71,6 +71,10 @@
     width: calc(100% - 13rem);
     padding-left: 0;
   }
+
+  .navibar .mainLogo{
+    height:4.5rem
+  }
   
   .navibar div, .navibar ul{
     flex: 2;

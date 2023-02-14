@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BaseUrl } from '../../../server/services/BaseUrl'
 import styles from "./styles.module.css"
 import AddIcon from '@mui/icons-material/Add';
@@ -61,6 +61,10 @@ const Card3 = (props) => {
     const toProd = ()=>{
         navigate(`/product/${props.item.product._id}`)
     }
+
+    useEffect(()=>{
+
+    },[])
 
     const [quantity,setQuantity] = useState(props.quantity);
   return (

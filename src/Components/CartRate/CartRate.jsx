@@ -10,7 +10,7 @@ import { setLoading } from '../../server/redux/actions/loading';
 
 const CartRate = (props) => {
     const [price,setPrice] = useState(0);
-    const [discount] = useState(10);
+    const [discount,setDiscount] = useState(10);
     const [total,setTotal] = useState(0);
     const [data,setData] = useState([]);
     // const [shimmer,setShimmer] = useState(false)
@@ -21,8 +21,13 @@ const CartRate = (props) => {
     const getRate = async ()=>{
         setShimmer(true)
         let y=0;
-        await data.forEach(x=>{y+=x.quantity*x.product.price})
+        let z=0;
+        await data.forEach(x=>{
+            y+=x.quantity*x.product.price
+            z+=x.quantity
+        })
         setPrice(y)
+        setDiscount(z*15)
         setShimmer(false)
     }
 

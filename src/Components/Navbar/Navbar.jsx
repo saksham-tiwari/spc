@@ -10,6 +10,7 @@ import { Dropdown, DropdownButton } from 'react-bootstrap';
 import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import { Menu } from '@mui/icons-material';
+import logo from "../../Assets/spclogo.svg"
 
 const Navbar = () => {
   const isUser = useSelector((state)=>state.user).isUser
@@ -42,7 +43,9 @@ const Navbar = () => {
   return (
     <nav className='navibar d-flex justify-content-between align-items-center'>
       <div className='logo'>
-        <Link className="navbar-brand" to="/">SPC SOAP</Link>
+        <Link className="navbar-brand" to="/">
+          <img src={logo} alt="SPC Soap" className="mainLogo"/>
+        </Link>
       </div>
       <form className="d-flex mr-auto ml-auto mySearch" role="search" onSubmit={submit}>
             <div class="input-group-prepend">

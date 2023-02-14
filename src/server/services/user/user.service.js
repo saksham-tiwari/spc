@@ -76,7 +76,8 @@ export const isInWishlist = async (wishlist)=>{
 }
 
 export const addToCart = async (cart,dec=false)=>{
-    return await axios.post("/user/cart?dec="+dec,{cart},accessHeader())
+    let endpoint = !dec?"/user/cart":"/user/cart?dec=true"
+    return await axios.post(endpoint,{cart},accessHeader())
     .then((res)=>{
         return Promise.resolve(res.data)
     })
