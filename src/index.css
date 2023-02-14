@@ -122,6 +122,40 @@ code {
 }
 
 
+footer{
+  background-color: var(--primary);
+  margin: 0;
+  padding: 48px 16px;
+  padding-right: 32px;
+  color: var(--secondary);
+}
+
+footer *{
+  font-size: 1rem;
+}
+
+footer b{
+  font-size: 1.2rem;
+}
+footer h3 b{
+  font-size: 1.75rem;
+}
+
+
+footer ul {
+  list-style: none;
+  display: flex;
+  gap:32px;
+  justify-content: space-between;
+}
+
+footer a{
+  color: var(--secondary);
+}
+footer a:hover, footer a:visited{
+  color: var(--empText);
+}
+
 
 @media only screen and (max-width:2560px) {
   *{
@@ -182,6 +216,10 @@ code {
 
   .ant-message svg{
     font-size: 20px !important;
+  }
+  footer{
+    padding: 24px 12px;
+    padding-right: 32px;
   }
 }
 @media only screen and (max-width:986px) {
