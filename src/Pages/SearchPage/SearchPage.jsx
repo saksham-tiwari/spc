@@ -6,6 +6,8 @@ import { setLoading } from '../../server/redux/actions/loading'
 import { searchProd } from '../../server/services/product/product.service'
 import styles from "./styles.module.css"
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import empty from "../../Assets/empty.svg"
+
 
 const SearchPage = () => {
     const location = useLocation()
@@ -31,6 +33,7 @@ const SearchPage = () => {
             console.log(err)
         })
         },[location])
+        
   return (
     <div className={styles.page}>
         <div className={styles.fixed}>
@@ -56,6 +59,15 @@ const SearchPage = () => {
 
         </div>
         <div className={styles.prodsBlock}>
+
+        {data.length===0 && <div className={styles.empty}>
+        <h1>No such product</h1>
+        <p>Kindly try using some other keywords.</p>
+        <button className='prim-btn' onClick={()=>{navigate("/explore")}}>Explore all items</button>
+        <div>
+        <img src={empty} alt="emptyCart"></img>
+        </div>
+      </div>}
 
         {data.map(prod=><Card2 product={prod}/>)}
         </div>

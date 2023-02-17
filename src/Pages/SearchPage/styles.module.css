@@ -54,6 +54,23 @@
     gap: 0rem 1.5rem;
 }
 
+.empty{
+    margin-left: 50%;
+    transform: translate(-50%,0);
+    text-align: center;
+}
+
+.empty p{
+    font-size: 1rem;
+    margin-bottom: 3rem;
+}
+
+.empty img{
+    margin-top: 3rem;
+    width: 18.03125rem;
+    height: 15.6875rem;
+}
+
 @media only screen and (max-width:768px){
     .filterBlock {
         display: none;

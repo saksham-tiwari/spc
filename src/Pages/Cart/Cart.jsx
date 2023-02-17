@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLoading } from '../../server/redux/actions/loading';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { loadCart } from '../../server/redux/actions/cart';
+import { setFix } from '../../server/redux/actions/footer';
 
 
 const Cart = () => {
@@ -41,6 +42,10 @@ const Cart = () => {
             console.log(err);})
         // }
     },[])
+    // useEffect(()=>{
+    //   (data.length<3 && data.length!==0)?dispatch(setFix(true)):dispatch(setFix(false))
+    //   return ()=>dispatch(setFix(false))
+    // },[data])
 
     useEffect(() => {
       if(window.outerWidth<=768){
@@ -81,7 +86,7 @@ const Cart = () => {
         </div>
       </div>}
       {(!isMobile&&data.length!==0)&&<CartRate shimmer={shimmer} setShimmer={setShimmer} data={data} change={change}/>}
-      {data.map((item,i)=><Card3 shimmer={shimmer} setShimmer={setShimmer} item={item} quantity={item.quantity} index={i} removeProduct={removeProduct} setChange={setChange}/>)}
+      <div style={{minHeight:"25rem"}}>{data.map((item,i)=><Card3 shimmer={shimmer} setShimmer={setShimmer} item={item} quantity={item.quantity} index={i} removeProduct={removeProduct} setChange={setChange}/>)}</div>
       {(isMobile&&data.length!==0)&&<CartRate shimmer={shimmer} setShimmer={setShimmer} data={data} change={change}/>}
 
     </div>

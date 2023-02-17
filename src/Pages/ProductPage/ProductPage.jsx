@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom'
 import DescBlock from '../../Components/DescBlock/DescBlock';
 import ProdDetails from '../../Components/ProdDetails/ProdDetails';
 import ProdDisplay from '../../Components/ProdDisplay/ProdDisplay';
+import { setFix } from '../../server/redux/actions/footer';
 import { setLoading } from '../../server/redux/actions/loading';
 import { getProdById } from '../../server/services/product/product.service';
 import styles from "./styles.module.css"
@@ -36,6 +37,10 @@ const ProductPage = () => {
             dispatch(setLoading(false))
             console.log(err)})
     },[location])
+    useEffect(()=>{
+      (data.length<3)?dispatch(setFix(true)):dispatch(setFix(false))
+      return ()=>dispatch(setFix(false))
+    },[data])
 
     useEffect(() => {
         if(window.outerWidth<=876){
