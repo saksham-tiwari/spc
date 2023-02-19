@@ -93,12 +93,15 @@
       font-size: 16px;
     }
   }
-  @media only screen and (max-width:1245px) {
+  @media only screen and (max-width:1440px) {
     .cartRate{
-      font-size: 32px;
+      font-size: 28px;
     }
-
-  
+  }
+  @media only screen and (max-width:1110px) {
+    .cartRate{
+      font-size: 48px;
+    }
   }
   @media only screen and (max-width:986px) {
     .cartRate{
