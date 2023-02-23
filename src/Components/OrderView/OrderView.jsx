@@ -30,21 +30,21 @@ const OrderView = (props) => {
       },[])
 
     const dispatch = useDispatch()
-    const generate = (print=false)=>{
-        dispatch(setLoading(true))
-        generateQr(props.data.razorpay.paymentId)
-        .then((res)=>{
-            console.log(res.data);
-            dispatch(setLoading(false))
-            setQrValue(res.data)
-            console.log(print);
-            if(print) printBill()
-        })
-        .catch((err)=>{
-            dispatch(setLoading(false))
-            console.log(err);
-        })
-    }
+    // const generate = (print=false)=>{
+    //     dispatch(setLoading(true))
+    //     generateQr(props.data.razorpay.paymentId)
+    //     .then((res)=>{
+    //         console.log(res.data);
+    //         dispatch(setLoading(false))
+    //         setQrValue(res.data)
+    //         console.log(print);
+    //         if(print) printBill()
+    //     })
+    //     .catch((err)=>{
+    //         dispatch(setLoading(false))
+    //         console.log(err);
+    //     })
+    // }
     const printBill = ()=>{
         // generate
         console.log("printing");
@@ -71,8 +71,8 @@ const OrderView = (props) => {
         </div>
         {qrValue.length>0&&<Qrcode value={qrValue}/>}
         <div className={styles.buttonDiv} id="dont-print">
-        <button className="sec-btn" onClick={()=>generate(true)} style={{border: "1px solid #E6E7E7"}}><FileDownloadOutlinedIcon/>Download invoice</button>
-        <button className="prim-btn" onClick={()=>generate(false)} disabled={qrValue.length>0}><QrCode2OutlinedIcon/>Show QR</button>
+        <button className="sec-btn" onClick={()=>printBill()} style={{border: "1px solid #E6E7E7", width:"100%"}}><FileDownloadOutlinedIcon/>Download invoice</button>
+        {/* <button className="prim-btn" onClick={()=>generate(false)} disabled={qrValue.length>0}><QrCode2OutlinedIcon/>Show QR</button> */}
         </div></>:<div style={{height:"200px"}}></div>}
 
     </div>

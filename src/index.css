@@ -279,5 +279,7 @@ footer a:hover, footer a:visited{
     left: 0;
     top: 0;
     border: #040D0B 1px solid;
+    /* margin-left: 50%; */
+    transform: translate(-30%,0);
   }
 }
