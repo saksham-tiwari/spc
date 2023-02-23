@@ -1,11 +1,13 @@
 .orderView{
     background: #ffffff;
     padding: 1.5rem 1.5rem 1rem;
-    width: 60%;
+    width: 60vw;
     /* margin-left: 21.0625rem; */
-    position:absolute;
+    position:relative;
     right: 6.5rem;
+    margin-left:38% !important;
     margin-top: 3.5rem;
+    top: 3.5rem;
     border-radius: 0.5rem;
 }
 
@@ -145,13 +147,14 @@
     .orderView{
         right: 1.67rem;
         width: 70%;
+        margin-left: 31% !important;
     }
 }
 
 @media only screen and (max-width:600px){
     .orderView{
         width: 92.5%;
-        margin-left: 0;
+        margin-left: 3.125rem !important;
         /* margin-right: 1.67rem; */
     }
 }

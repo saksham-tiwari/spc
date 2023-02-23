@@ -7,12 +7,17 @@ import styles from "./styles.module.css"
 import { ShimmerTitle,ShimmerButton,ShimmerBadge } from "react-shimmer-effects";
 import { useDispatch } from 'react-redux';
 import { setLoading } from '../../server/redux/actions/loading';
+import PaymentModal from './PaymentModal';
+import { message } from 'antd';
 
 const CartRate = (props) => {
     const [price,setPrice] = useState(0);
     const [discount,setDiscount] = useState(10);
     const [total,setTotal] = useState(0);
     const [data,setData] = useState([]);
+    const [payment,setPayment] = useState(false);
+    const [paymentId,setPaymentId] = useState(false);
+    const [paySuccess,setPaySuccess] = useState(false);
     // const [shimmer,setShimmer] = useState(false)
     let shimmer=props.shimmer 
     let setShimmer=props.setShimmer
@@ -42,51 +47,55 @@ const checkout = async function(e){
     //   t.json()
     // );
     console.log(data);
+    setPayment(true)
+
     await createOrder(total*100)
     .then((res)=>{
         dispatch(setLoading(false))
-        console.log(res.data.razorpay.id);
-        options = {
-            "key": "rzp_test_OJiQYnuFVOUynK", // Enter the Key ID generated from the Dashboard
-            "amount": total*100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-            "currency": "INR",
-            "name": "SPC Soap",
-            "description": "Test Transaction",
-            "image": "https://example.com/your_logo",
-            "order_id": res.data.razorpay.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-            // "callback_url":BaseUrl+"payment/verify",
-            // "redirect": true,
-            "prefill": {
-                "name": "Gaurav Kumar",
-                "email": "gaurav.kumar@example.com",
-                "contact": "9999999999"
-            },
-            "notes": {
-                "address": "Razorpay Corporate Office"
-            },
-            "theme": {
-                "color": "#247F70"
-            },
-            handler: function (response) {
-                // alert(response.razorpay_payment_id);
-                // alert(response.razorpay_order_id);
-                // alert(response.razorpay_signature);
-                console.log(response);
-                dispatch(setLoading(true))
-                response['id'] = res.data._id;
-                verifyOrder(response)
-                .then((res)=>{
-                    dispatch(setLoading(false))
-                    console.log(res)
-                    // navigate("/order-success")
+        console.log(res);
+        setPaymentId(res.data._id)
+        setPayment(true)
+        // options = {
+        //     "key": "rzp_test_OJiQYnuFVOUynK", // Enter the Key ID generated from the Dashboard
+        //     "amount": total*100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        //     "currency": "INR",
+        //     "name": "SPC Soap",
+        //     "description": "Test Transaction",
+        //     "image": "https://example.com/your_logo",
+        //     "order_id": res.data.razorpay.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        //     // "callback_url":BaseUrl+"payment/verify",
+        //     // "redirect": true,
+        //     "prefill": {
+        //         "name": "Gaurav Kumar",
+        //         "email": "gaurav.kumar@example.com",
+        //         "contact": "9999999999"
+        //     },
+        //     "notes": {
+        //         "address": "Razorpay Corporate Office"
+        //     },
+        //     "theme": {
+        //         "color": "#247F70"
+        //     },
+        //     handler: function (response) {
+        //         // alert(response.razorpay_payment_id);
+        //         // alert(response.razorpay_order_id);
+        //         // alert(response.razorpay_signature);
+        //         console.log(response);
+        //         dispatch(setLoading(true))
+        //         response['id'] = res.data._id;
+        //         verifyOrder(response)
+        //         .then((res)=>{
+        //             dispatch(setLoading(false))
+        //             console.log(res)
+        //             // navigate("/order-success")
 
-                    navigate("/order-success", { state: { redirect: true } })
-                })
-                .catch((err)=>{console.log(err)})
-              },
-        };
-        var rzp1 = new window.Razorpay(options);
-        rzp1.open();
+        //             navigate("/order-success", { state: { redirect: true } })
+        //         })
+        //         .catch((err)=>{console.log(err)})
+        //       },
+        // };
+        // var rzp1 = new window.Razorpay(options);
+        // rzp1.open();
     })
     .catch((err)=>{console.log(err);})
     
@@ -110,6 +119,22 @@ const checkout = async function(e){
             setShimmer(false)
             console.log(err);})
     },[props.change])
+    useEffect(()=>{
+        if(paySuccess&&paymentId.length){
+            dispatch(setLoading(true))
+            verifyOrder({id:paymentId})
+            .then((res)=>{
+                dispatch(setLoading(false))
+                console.log(res)
+                // navigate("/order-success")
+
+                navigate("/order-success", { state: { redirect: true } })
+            })
+            .catch((err)=>{console.log(err)})
+        } else if(paymentId.length){
+            message.error("Order not completed!")
+        }
+    },[paySuccess])
   return (
     <div className={styles.cartRate}>
         {shimmer?
@@ -158,6 +183,9 @@ const checkout = async function(e){
                 <Col>Total Payable</Col>
                 <Col className={styles.second}>Rs.{total}</Col>
             </Row>
+            
+            <PaymentModal open={payment} setOpen={setPayment} setPaySuccess={setPaySuccess}/>
+                {/* <BasicModal/>    */}
         </Container>}
         {shimmer?<ShimmerButton size="lg" width="100%"  className={styles.btnShimmer}/>:<button className='prim-btn' id="rzp-button1" onClick={checkout}>Proceed to Checkout</button>}
         {/* <ShimmerBadge width={"100%"} /> */}

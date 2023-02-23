@@ -4,6 +4,7 @@ import styles from "./styles.module.css"
 import { useDispatch } from "react-redux";  
 import { setLoading } from '../../server/redux/actions/loading';
 import { useNavigate } from 'react-router-dom';
+import { BaseUrl } from '../../server/services/BaseUrl';
 
 const List = (props) => {
     const navigate = useNavigate()
@@ -26,7 +27,7 @@ const List = (props) => {
   return (
     <div className={styles.list} onClick={()=>{navigate(`/product/${data._id}`)}}>
         {data.length!==0?<><div style={{flex:"1"}}>
-            <img className={styles.prodImg} src={data.imageUrl[0]} alt="product"></img>
+            <img className={styles.prodImg} src={BaseUrl+ data.imageUrl[0]} alt="product"></img>
         </div>
         <div style={{flex:"7"}}>
             <h2>{data.name} <span>Rs. {data.price}</span></h2>
