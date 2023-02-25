@@ -1,0 +1,38 @@
+.content{
+    background-color: white;
+    border-radius: 12px;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    font-size: 1.5rem;
+    align-items: center;
+
+}
+.content img{
+    width: 40%;
+    height: 100%;
+    /* border: 2px var(--empText) solid; */
+    border-radius: 12px 0px 0px 12px;
+    /* border-radius: 50%; */
+}
+
+.content p{
+    padding: 1rem;
+}
+
+
+@media only screen and (min-width:1474px){
+    .content{
+        font-size: 1.25rem;
+    }
+}
+@media only screen and (min-width:1840px){
+    .content{
+        font-size: 1rem;
+    }
+}
+@media only screen and (min-width:2180px){
+    .content{
+        font-size: 0.9rem;
+    }
+}

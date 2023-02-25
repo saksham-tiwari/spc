@@ -17,6 +17,8 @@ function App() {
 
   // const [scroll,setScroll] = useState()
 
+  const location = useLocation()
+
 
   useEffect(()=>{
     // console.log(localStorage.getItem("token"));
@@ -24,6 +26,9 @@ function App() {
       const body = document.getElementsByTagName("body")[0]
       body.style.overflow =  loading?"hidden":"visible"
   },[loading])
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[location])
 
   useEffect(()=>{
     if(localStorage.getItem("token")) {
