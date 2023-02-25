@@ -37,15 +37,23 @@ export default function PaymentModal(props) {
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Payment Options
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            1. <b>UPI</b> : 123456789@xyz
-          </Typography>
+          
           <Typography id="modal-modal-description" style={{cursor:"pointer"}} sx={{ mt: 2 }} onClick={()=>{setQr(prev=>!prev)}}>
-            2. <b>QR Code</b><ArrowDropDownIcon style={!qr?{marginTop:"-5px"}:{marginTop:"-5px",transform:"rotate(180deg)"}}/>
-            
+            1. <b>QR Code</b><ArrowDropDownIcon style={!qr?{marginTop:"-5px"}:{marginTop:"-5px",transform:"rotate(180deg)"}}/>
+          </Typography>
+          {qr&&<img src={QR} alt="QR" style={{width:"220px"}}/>}
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            2. <b>UPI</b> : susta99994@barodampay
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            3. <b>Account Details</b>: 
+            <p>A/C Holder Name: Sustainable Production Center</p>
+            <p>Bank Name: Bank of Baroda</p>
+            <p>A/C No.: 21330200006779</p>
+            <p>IFSC Code: BARB0TRDGHA</p>
+            <p>Branch Name: Clock Tower Branch, Ghaziabad</p>
           </Typography>
           <br/>
-          {qr&&<img src={QR} alt="QR" style={{width:"220px"}}/>}
           <Typography id="modal-modal-description" className="d-flex align-items-center justify-content-between modalBtns" sx={{ mt: 2 }}>
             <button className='sec-btn' onClick={handleClose}>Cancel</button>
             <button className='prim-btn' onClick={()=>{

@@ -17,7 +17,7 @@ import Content from "./Content";
 
 export default function Caraousel() {
     const [imgArr,setImgArr] = useState([user1,user2,user3])
-    const [reviews,setReviews] = useState(["I have been very pleased with all the soaps I have tried. A very high-quality product! The Mogra soap is of very high quality and smells great. Thank you so much and I will certainly be buying in the future!","I personally feel that these handcrafted soaps are way much better than the other soaps. The herbs and scents are a great combination(specially mogra). Quite a luxurious experience. Definitely worth the price.","As an extremely satisfied customer,I want to thank VE cell for your variety of homemade, natural and long lasting soaps. It was such a delightful experience to use these products."])
+    const [reviews,setReviews] = useState(["I have been very pleased with all the soaps I have tried. A very high-quality product! The Mogra soap is of very high quality and smells great. Thank you so much and I will certainly be buying in the future!","I personally feel that these handcrafted soaps are way much better than the other soaps. The herbs and scents are a great combination (specially mogra). Quite a luxurious experience. Definitely worth the price.","As an extremely satisfied customer,I want to thank VE cell for your variety of homemade, natural and long lasting soaps. It was such a delightful experience to use these products."])
   return (
     <>
         <h1 style={{fontWeight: "600",fontSize: "2.5rem"}}>Exciting reviews <span className='empText' style={{fontWeight: "600",fontSize: "2.5rem"}}>from our faculties.</span></h1>
@@ -26,6 +26,7 @@ export default function Caraousel() {
         grabCursor={true}
         centeredSlides={true}
         slidesPerView={"auto"}
+        initialSlide= {1}
         coverflowEffect={{
           rotate: 50,
           stretch: 0,
