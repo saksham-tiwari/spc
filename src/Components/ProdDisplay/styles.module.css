@@ -37,6 +37,8 @@
     margin-bottom: 1rem;
     border-radius: 0.25rem;
     cursor: pointer;
+    filter: brightness(55%);
+
 }
 
 .prodImg img{
@@ -46,7 +48,10 @@
 }
 
 .siderow .active{
-    border: 1px var(--empText) solid;
+    /* border: 2.5px var(--primary) solid; */
+    filter: brightness(100%);
+    /* box-shadow: var(--empText) 3px 3px 2.5px 0.5px;
+    box-shadow: 2px 2px 2.5px rgba(136,136,136,0.5), 0 3px 6px rgba(136,136,136,.8); */
 }
 
 @media only screen and (max-width:876px){
