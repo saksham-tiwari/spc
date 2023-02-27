@@ -10,7 +10,7 @@ const ProdDisplay = (props) => {
   return (
     <div className={styles.prodDisplay}>
         <div className={styles.siderow}>
-            {props.data.imageUrl.map(image=><img src={BaseUrl+image} alt='product' onClick={(e)=>setMainImg(e.target.currentSrc)}></img>)}
+            {props.data.imageUrl.map(image=><img src={BaseUrl+image} alt='product' onClick={(e)=>setMainImg(e.target.currentSrc)} className={((BaseUrl+image)===mainImg)?`${styles.active}`:""}></img>)}
         </div>
         <div className={styles.prodImg}>
             <img src={mainImg!==""?mainImg:(BaseUrl+props.data.imageUrl[0])} alt='product'></img>
