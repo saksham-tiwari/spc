@@ -122,7 +122,7 @@ const checkout = async function(e){
     useEffect(()=>{
         if(paySuccess&&paymentId.length){
             dispatch(setLoading(true))
-            verifyOrder({paymentId:paymentId})
+            verifyOrder({id:paymentId})
             .then((res)=>{
                 dispatch(setLoading(false))
                 console.log(res)
