@@ -60,7 +60,7 @@ const Navbar = () => {
         </li>
         
         <li className="nav-item">
-            <DropdownButton id="dropdown-basic-button" title={`Hi!,${name}`}>
+            <DropdownButton id="dropdown-basic-button" title={`Hi!,${name.length>10?(`${name.substring(0,10)}...`):name}`}>
               
               <Dropdown.Item onClick={()=>navigate("/order-history")}><Inventory2OutlinedIcon/>My Orders</Dropdown.Item>
               <Dropdown.Item onClick={()=>navigate("/wishlist")}><FavoriteBorderOutlinedIcon/> Wishlist</Dropdown.Item>
